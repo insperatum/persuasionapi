@@ -7,7 +7,7 @@ class UserInfo(BaseModel):
     name: str
     age: int
 
-def foo(x):
+def foo():
     # Patch the OpenAI client
     client = instructor.from_openai(OpenAI())
 
