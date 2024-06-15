@@ -15,4 +15,5 @@ def add(x, y):
     AddResult.create(x=x, y=y, result=result)
 
     bar = generate.foo()
+    print("Bar:", bar)
     return bar
