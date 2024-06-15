@@ -39,9 +39,18 @@ services:
           type: redis
           name: celery-redis
           property: connectionString
+      - key: DATABASE_URL # Sets DATABASE_URL to the connection string of the django-app-db database
+        fromDatabase:
+          name: mydb
+          property: connectionString
   - type: redis
     name: celery-redis
     region: ohio
     plan: starter # we choose a plan with persistence to ensure tasks are not lost upon restart
     maxmemoryPolicy: noeviction # recommended policy for queues
     ipAllowList: [] # only allow internal connections
+
+
+databases:
+  - name: mydb
+    plan: starter
