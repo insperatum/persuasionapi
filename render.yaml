@@ -1,10 +1,11 @@
 services:
-  - type: worker
-    name: celery-worker
+  - type: web
+    name: api
     runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "celery --app tasks worker --loglevel info --concurrency 4"
+    plan: starter
     autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: CELERY_BROKER_URL
         fromService:
@@ -15,6 +16,8 @@ services:
         fromDatabase:
           name: mydb
           property: connectionString
+
+
   - type: web
     name: app
     runtime: python
@@ -31,6 +34,24 @@ services:
         fromDatabase:
           name: mydb
           property: connectionString
+
+  - type: worker
+    name: celery-worker
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "celery --app tasks worker --loglevel info --concurrency 4"
+    autoDeploy: true
+    envVars:
+      - key: CELERY_BROKER_URL
+        fromService:
+          name: celery-redis
+          type: redis
+          property: connectionString
+      - key: DATABASE_URL # Sets DATABASE_URL to the connection string of the django-app-db database
+        fromDatabase:
+          name: mydb
+          property: connectionString
+
   - type: web
     name: flower
     plan: free
@@ -48,6 +69,7 @@ services:
         fromDatabase:
           name: mydb
           property: connectionString
+
   - type: redis
     name: celery-redis
     plan: starter # we choose a plan with persistence to ensure tasks are not lost upon restart

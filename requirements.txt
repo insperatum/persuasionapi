@@ -37,3 +37,6 @@ zipp==3.8.0
 peewee
 psycopg2
 instructor
+
+
+fastapi[all]

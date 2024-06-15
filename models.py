@@ -1,20 +1,17 @@
-from peewee import Model, CharField, IntegerField, UUIDField
+from peewee import Model, CharField, TextField
 from database import db
+import uuid
 
 class BaseModel(Model):
     class Meta:
         database = db
-        
-class AddResult(BaseModel):
-    x = IntegerField()
-    y = IntegerField()
-    result = IntegerField()
 
-class Request(BaseModel):
-    id = UUIDField()
-    input = CharField()
-    output = CharField()
+class Task(BaseModel):
+    id = CharField(default=lambda: uuid.uuid4().hex, primary_key=True)
+    input = TextField()
+    output = TextField(null=True)
     
 # Create the tables
 db.connect()
-db.create_tables([AddResult, Request])
+db.drop_tables([Task]) # TODO: peewee-db-evolve
+db.create_tables([Task])
