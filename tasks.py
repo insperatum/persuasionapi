@@ -5,16 +5,33 @@ from celery.utils.log import get_task_logger
 from models import Task, Message, Prediction
 from ai.generate import generate_variants
 from ai.predict import predict_impact
+from ai.describe import transcribe_video
 from multiprocessing.pool import ThreadPool
 import json
+from tempfile import NamedTemporaryFile
+from fastapi import UploadFile
 
 app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
 
 
 @app.task
-def analyze(task_id):
+def analyze(task_id:str):
     task = Task.get(id=task_id)
+    logger.info(f"Analyzing task {task_id} with input: {task.input}")
+    if task.file is not None:
+        logger.info(f"File provided with task {task_id}")
+        logger.info(f"File size: {len(task.file)} bytes")
+        video_file = NamedTemporaryFile(delete=False)
+        video_file.write(task.file)
+        video_file.close()
+
+        text = transcribe_video(video_file.name)
+        os.remove(video_file.name)
+        task.input = "VIDEO TRANSCRIPT: " + text
+        task.file = None
+        task.save()
+
     message = Message.create(
         source = "USER",
         value = task.input

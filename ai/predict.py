@@ -1,12 +1,13 @@
 from pydantic import BaseModel, Field
 from multiprocessing.pool import ThreadPool
 from ai.util import openai_client
+import instructor
 
 class Prediction(BaseModel):
     prediction: int = Field(description="A prediction for how impactful the message will be, from 1 (not at all impactful) to 100 (extremely impactful)") 
 
 def predict_impact(message: str):
-    prediction = openai_client().chat.completions.create(
+    prediction = instructor.from_openai(openai_client()).chat.completions.create(
         model="gpt-3.5-turbo",
         response_model=Prediction,
         messages=[

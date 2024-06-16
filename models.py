@@ -1,4 +1,4 @@
-from peewee import Model, CharField, TextField, ForeignKeyField, FloatField
+from peewee import Model, CharField, TextField, ForeignKeyField, FloatField, BlobField
 from database import db
 import uuid
 
@@ -8,7 +8,8 @@ class BaseModel(Model):
 
 class Task(BaseModel):
     id = CharField(default=lambda: uuid.uuid4().hex, primary_key=True)
-    input = TextField()
+    input = TextField(null=True)
+    file = BlobField(null=True)
     output = TextField(null=True)
 
 class Message(BaseModel):

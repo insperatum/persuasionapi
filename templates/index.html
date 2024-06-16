@@ -6,7 +6,6 @@
     <title>Message Form</title>
     <style>
         body {
-            background-color: white;
             font-family: Arial, sans-serif;
             margin: 20px;
         }
@@ -25,7 +24,7 @@
             display: block;
             margin-bottom: 5px;
         }
-        input[type="text"], textarea {
+        input[type="text"], textarea, input[type="file"] {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
@@ -55,11 +54,15 @@
 <body>
 
 <div class="container">
-    <h2>Message critic</h2>
+    <!-- <h2>Message critic</h2> -->
     <form id="messageForm">
         <div class="form-group">
             <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" id="file" name="file">
         </div>
         <button type="submit">Submit</button>
     </form>
@@ -73,18 +76,28 @@
         const message = document.getElementById('message').value;
         const apiEndpoint = 'https://api-0f42.onrender.com/generate';
 
+        const formData = new FormData();
+        const fileInput = document.querySelector('input[type="file"]');
+        const file = fileInput.files[0];
+        formData.append('file', file);
+        formData.append('message', message);
+
+        console.log('Sending request...')
+        console.log(formData)
+
         fetch(apiEndpoint, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ message: message })
+            body: formData
         })
         .then(response => response.json())
         .then(data => {
-            const taskId = data.task_id;
-            document.getElementById('result').innerHTML = 'Running task id:' + taskId + '<br>Please wait...';
-            checkStatus(taskId);
+            if (!data.task_id) {
+                document.getElementById('result').innerText = 'An error occurred: ' + JSON.stringify(data);
+            } else {
+                const taskId = data.task_id;
+                document.getElementById('result').innerHTML = 'Running task id:' + taskId + '<br>Please wait...';
+                checkStatus(taskId);
+            }
         })
         .catch(error => {
             console.error('Error:', error);
@@ -105,12 +118,12 @@
         .then(data => {
             if (data.status === 'completed') {
                 console.log(data.output)
-                document.getElementById('result').innerHTML = ""
+                document.getElementById('result').innerHTML = "<h2>Suggestions</h2>"
                 // output is a list of suggestions, each with a score and a list of variants
-                data.output.forEach(suggestion => {
-                    s = `<b>${suggestion.strategy}</b><br><ul>`
-                    suggestion.variants.forEach(variant => {
-                        s += `<li>${variant}</li>`
+                data.output.forEach(x => {
+                    s = `<b>${x.strategy}</b><br><ul>`
+                    x.suggestions.forEach(suggestion => {
+                        s += `<li>"${suggestion.message}"</li> <i>(prediction: ${suggestion.prediction})</i>`
                     });
                     s += "</ul>"
                     

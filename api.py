@@ -1,9 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, Form, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from models import Task
 from tasks import analyze
 import json
+from tempfile import NamedTemporaryFile
 
 app = FastAPI()
 # Configure CORS
@@ -19,12 +20,14 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
 
-class GenerateRequest(BaseModel):
-    message: str
+
 @app.post("/generate")
-def generate(generate_request: GenerateRequest):
-    message = generate_request.message
-    task = Task.create(input=message)
+async def generate(message:str = Form(""), file: UploadFile = File(None)):
+    if not file and not message:
+        return {"message": "No data sent"}
+
+    filecontents = await file.read()
+    task = Task.create(input=message, file=filecontents)
     analyze.delay(task.id)
     return {"task_id": task.id}
 
