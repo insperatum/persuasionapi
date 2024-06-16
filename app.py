@@ -8,4 +8,8 @@ app.secret_key = os.getenv('FLASK_SECRET_KEY', "super-secret")
 
 @app.route('/')
 def main():
-    return render_template('index.html')
+    return render_template('landing.html')
+
+@app.route('/demo')
+def demo():
+    return render_template('demo.html')
