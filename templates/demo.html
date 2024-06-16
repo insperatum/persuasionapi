@@ -3,19 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Form</title>
+    <title>Persuasion API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* background: linear-gradient(135deg, #38a1db, #003366); */
+            background: linear-gradient(135deg, #80278f, #003366);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            /* text-align: center; */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 4em;
+            margin: 0;
+
+            background: linear-gradient(45deg, #ff4bfc, #ff8521);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+    <style>
+        #messageForm {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 1em;
+            border-radius: 10px;
+            color: white;
         }
         .container {
-            max-width: 800px;
+            width: 800px;
             margin: auto;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* border: 1px solid #ccc; */
+            
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
         }
         .form-group {
             margin-bottom: 15px;
@@ -34,27 +66,30 @@
         button {
             padding: 10px 15px;
             color: #fff;
-            background-color: #007bff;
+            /* background-color: #007bff; */
+            background: #6d2a88;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s;
         }
         button:hover {
-            background-color: #0056b3;
+            background: #ff8035;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
         #result {
-            margin-top: 20px;
             padding: 10px;
-            border: 1px solid #007bff;
-            border-radius: 5px;
-            background-color: #e9f5ff;
+            background-color: white;
+            font-family: 'Roboto', sans-serif;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- <h2>Message critic</h2> -->
+    <div class="header">
+        <h1>Persuasion API</h1>
+    </div>
     <form id="messageForm">
         <div class="form-group">
             <label for="message">Message:</label>
@@ -65,8 +100,9 @@
             <input type="file" id="file" name="file">
         </div>
         <button type="submit">Submit</button>
+
+        <div id="result" style="display: none;"></div>
     </form>
-    <div id="result"></div>
 </div>
 
 <script>
@@ -74,16 +110,16 @@
         event.preventDefault();
 
         const message = document.getElementById('message').value;
-        const apiEndpoint = 'https://api-0f42.onrender.com/generate';
+        const apiEndpoint = 'https://api.rhetorical.org/generate';
 
         const formData = new FormData();
         const fileInput = document.querySelector('input[type="file"]');
         const file = fileInput.files[0];
-        formData.append('file', file);
-        formData.append('message', message);
+        if(file) {formData.append('file', file)}
+        if(message) {formData.append('message', message)}
 
-        console.log('Sending request...')
-        console.log(formData)
+        document.getElementById('result').style.display = 'block';
+        document.getElementById('result').innerText = 'Sending request...';
 
         fetch(apiEndpoint, {
             method: 'POST',
@@ -106,7 +142,7 @@
     });
 
     function checkStatus(taskId) {
-        const statusEndpoint = 'https://api-0f42.onrender.com/task';
+        const statusEndpoint = 'https://api.rhetorical.org/task';
         fetch(statusEndpoint, {
             method: 'POST',
             headers: {

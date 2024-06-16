@@ -18,22 +18,22 @@ services:
           property: connectionString
 
 
-  - type: web
-    name: app
-    runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    autoDeploy: true
-    envVars:
-      - key: CELERY_BROKER_URL
-        fromService:
-          name: celery-redis
-          type: redis
-          property: connectionString
-      - key: DATABASE_URL # Sets DATABASE_URL to the connection string of the django-app-db database
-        fromDatabase:
-          name: mydb
-          property: connectionString
+  # - type: web
+  #   name: app
+  #   runtime: python
+  #   buildCommand: "pip install -r requirements.txt"
+  #   startCommand: "gunicorn app:app"
+  #   autoDeploy: true
+  #   envVars:
+  #     - key: CELERY_BROKER_URL
+  #       fromService:
+  #         name: celery-redis
+  #         type: redis
+  #         property: connectionString
+  #     - key: DATABASE_URL # Sets DATABASE_URL to the connection string of the django-app-db database
+  #       fromDatabase:
+  #         name: mydb
+  #         property: connectionString
 
   - type: worker
     name: celery-worker
