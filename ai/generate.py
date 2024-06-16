@@ -1,13 +1,6 @@
-import instructor
 from pydantic import BaseModel, Field
-from openai import OpenAI
 from multiprocessing.pool import ThreadPool
-
-clients = []
-def client():
-    if not clients:
-        clients.append(instructor.from_openai(OpenAI()))
-    return clients[0]
+from ai.util import openai_client
 
 class ImprovementStrategies(BaseModel):
     strategies: list[str] = Field(description="A list of suggestions for ways to improving the message (for example, 'Use simpler language', 'Add a call to action', etc.)")
@@ -19,7 +12,7 @@ def generate_variants(message: str):
     N_strategies = 5
     N_variants = 3
 
-    strategies = client().chat.completions.create(
+    strategies = openai_client().chat.completions.create(
         model="gpt-3.5-turbo",
         response_model=ImprovementStrategies,
         messages=[
@@ -35,7 +28,7 @@ def generate_variants(message: str):
     )
 
     def generate_variants_for_strategy(strategy):
-        return client().chat.completions.create(
+        return openai_client().chat.completions.create(
             model="gpt-3.5-turbo",
             response_model=MessageVariants,
             messages=[

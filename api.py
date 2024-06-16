@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from models import Task
 from tasks import analyze
+import json
 
 app = FastAPI()
 # Configure CORS
@@ -44,5 +45,5 @@ def task(task_request: TaskRequest):
             "task_id": task.id,
             "input": task.input,
             "status": "completed",
-            "output": task.output,
+            "output": json.loads(task.output),
         }

@@ -55,7 +55,7 @@
 <body>
 
 <div class="container">
-    <h2>Send a Message</h2>
+    <h2>Message critic</h2>
     <form id="messageForm">
         <div class="form-group">
             <label for="message">Message:</label>
@@ -104,7 +104,21 @@
         .then(response => response.json())
         .then(data => {
             if (data.status === 'completed') {
-                document.getElementById('result').innerText = data.output
+                console.log(data.output)
+                document.getElementById('result').innerHTML = ""
+                // output is a list of suggestions, each with a score and a list of variants
+                data.output.forEach(suggestion => {
+                    s = `<b>${suggestion.strategy}</b><br><ul>`
+                    suggestion.variants.forEach(variant => {
+                        s += `<li>${variant}</li>`
+                    });
+                    s += "</ul>"
+                    
+                    const suggestionElement = document.createElement('div');
+                    suggestionElement.innerHTML = s
+                    document.getElementById('result').appendChild(suggestionElement);
+                });
+                // data.output
             } else {
                 setTimeout(() => checkStatus(taskId), 200);
             }
