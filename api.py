@@ -45,28 +45,30 @@ async def redirect_example():
     return RedirectResponse(url="/web/demo")
 
 @app.post("/predict")
-async def predict(message:str = Form(""), file: Union[UploadFile, None] = None):
+async def predict(message:str = Form(""), file: Union[UploadFile, None] = None, model:str = Form(""), question:str = Form(""), lower:str = Form(""), upper:str = Form(""), audience:str = Form("us-adults")):
+    # TODO add validation
     if not file and not message: return {"message": "No data sent"}
     if file: file = await file.read()
 
-    task = Task.create(command="predict", input=message, file=file)
+    task = Task.create(command="predict", input=message, file=file, model=model, question=question, lower=lower, upper=upper, audience=audience)
     analyze.delay(task.id)
     return {"task_id": task.id}
 
 @app.post("/generate")
-async def generate(message:str = Form(""), file: Union[UploadFile, None] = None):
+async def generate(message:str = Form(""), file: Union[UploadFile, None] = None, model:str = Form(""), question:str = Form(""), lower:str = Form(""), upper:str = Form(""), audience:str = Form("us-adults")):
+    # TODO add validation
     if not file and not message: return {"message": "No data sent"}
     if file: file = await file.read()
-    
-    task = Task.create(command="generate", input=message, file=file)
+
+    task = Task.create(command="generate", input=message, file=file, model=model, question=question, lower=lower, upper=upper, audience=audience)
     analyze.delay(task.id)
     return {"task_id": task.id}
 
 
 class TaskRequest(BaseModel):
     task_id: str
-@app.post("/task")
-def task(task_request: TaskRequest):
+@app.post("/status")
+def status(task_request: TaskRequest):
     task = Task.get(id=task_request.task_id)
     if task.output is None:
         return {

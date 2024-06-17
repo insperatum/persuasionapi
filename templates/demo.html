@@ -184,8 +184,8 @@
             <h2>Target</h2>
             <div style="display: flex; gap:30px">
                 <div class="form-group" style="min-width:550px">
-                    <label for="attitude">Write a desired outcome question:</label>
-                    <textarea id="attitude" name="attitude" rows="4">How much do you agree/disagree: "</textarea><br/>
+                    <label for="question">Write an outcome question:</label>
+                    <textarea id="question" name="question" rows="4">How much do you agree/disagree: "</textarea><br/>
                     <div style="margin-top:0.5em;">
                         <input type="text" id="lower" name="lower" value="Strongly disagree" style="width:150px !important"> to <input type="text" id="upper" name="upper" value="Strongly agree" style="width:150px !important">
                     </div>
@@ -196,9 +196,11 @@
                     <!-- Combobox -->
                     <select id="audience" name="audience">
                         <option value="us-adults">U.S. Adults</option>
-                        <option value="Gen-Z">Gen Z</option>
-                        <option value="Gen-Y">Gen Y</option>
-                        <option value="Gen-X">Gen X</option>
+                        <option value="18-25">18-25</option>
+                        <option value="65+">65+</option>
+                        <option value="democrats">Democrats</option>
+                        <option value="independents">Independents</option>
+                        <option value="republicans">Republicans</option>
                     </select>   
                 </div>
             </div>
@@ -246,7 +248,7 @@
     document.getElementById('edit').addEventListener('change', function() {
         document.getElementById('targetFormGroup').classList.add('expand');
     });
-    document.getElementById('attitude').addEventListener('input', function() {
+    document.getElementById('question').addEventListener('input', function() {
         document.getElementById('contentFormGroup').classList.add('expand');
     });
     document.getElementById('message').addEventListener('input', function() {
@@ -276,9 +278,16 @@
         const file = fileInput.files[0];
         if(file) {formData.append('file', file)}
         if(message) {formData.append('message', message)}
+        
+        formData.append('model', document.getElementById('model').value);
+        formData.append('question', document.getElementById('question').value);
+        formData.append('lower', document.getElementById('lower').value);
+        formData.append('upper', document.getElementById('upper').value);
+        formData.append('audience', document.getElementById('audience').value);
+        
 
         document.getElementById('progress').style.display = 'block';
-        document.getElementById('progress').innerText = 'Sending request...';
+        document.getElementById('progress').innerText = 'Sending request to API';
 
         fetch(apiEndpoint, {
             method: 'POST',
@@ -290,14 +299,14 @@
                 document.getElementById('progress').innerText = 'An error occurred: ' + JSON.stringify(data);
             } else {
                 const taskId = data.task_id;
-                document.getElementById('progress').innerHTML = 'Calculating...';
+                document.getElementById('progress').innerHTML = 'Thinking';
                 // Animate ellipsis
                 setInterval(() => {
                     const progress = document.getElementById('progress').innerText;
-                    if (progress.length < 15) {
+                    if (progress.length < 11) {
                         document.getElementById('progress').innerText += '.';
                     } else {
-                        document.getElementById('progress').innerText = 'Calculating';
+                        document.getElementById('progress').innerText = 'Thinking';
                     }
                 }, 500)
 
@@ -312,7 +321,7 @@
     });
 
     function checkStatus(taskId) {
-        const statusEndpoint = 'https://api.rhetorical.org/task';
+        const statusEndpoint = 'https://api.rhetorical.org/status';
         fetch(statusEndpoint, {
             method: 'POST',
             headers: {
@@ -324,7 +333,7 @@
         .then(data => {
             if (data.status === 'completed') {
                 console.log(data.output)
-                document.getElementById('result').innerHTML = "<h1>API Response:</h1>"
+                document.getElementById('result').innerHTML = "<h1>API Response</h1>"
                 
                 // if output has key "prediction"
                 if (data.output.prediction) {

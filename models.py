@@ -9,8 +9,15 @@ class BaseModel(Model):
 class Task(BaseModel):
     id = CharField(default=lambda: uuid.uuid4().hex, primary_key=True)
     command = CharField()
+    model = CharField()
     input = TextField(null=True)
     file = BlobField(null=True)
+
+    question = TextField()
+    lower = TextField()
+    upper = TextField()
+
+    audience = TextField(default = lambda: "us-adults")
     output = TextField(null=True)
 
 class Message(BaseModel):

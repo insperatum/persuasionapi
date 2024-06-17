@@ -15,17 +15,29 @@ app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
 
 
-def create_prediction(message):
-    prediction = Prediction.create(
-        model = "gpt3.5-turbo",
-        message = message,
-        value = predict_impact(message.value)
-    )
-    return prediction.value
 
 @app.task
 def analyze(task_id:str):
     task = Task.get(id=task_id)
+    question = task.question
+    lower = task.lower
+    upper = task.upper
+    audience = task.audience
+    model = task.model
+
+    def create_prediction(message):
+        prediction = Prediction.create(
+            model = "gpt3.5-turbo",
+            message = message,
+            value = predict_impact(
+                model=model,
+                message=message.value,
+                question=question, lower=lower, upper=upper, audience=audience
+            )
+        )
+        return prediction.value
+
+
     logger.info(f"Analyzing task {task_id} with input: {task.input}")
     if task.file is not None:
         logger.info(f"File provided with task {task_id}")
