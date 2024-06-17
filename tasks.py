@@ -2,114 +2,83 @@ import os
 from celery import Celery
 from celery.utils.log import get_task_logger
 
-from models import Task, Message, Prediction
-from ai.generate import generate_variants
-from ai.predict import predict_impact
-from ai.describe import transcribe_video
-from multiprocessing.pool import ThreadPool
+import ai
+from models import Task
+# from multiprocessing.pool import ThreadPool
+import threading
+import concurrent.futures
 import json
-from tempfile import NamedTemporaryFile
-from fastapi import UploadFile
 
 app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
 
-
-
 @app.task
 def analyze(task_id:str):
     task = Task.get(id=task_id)
-    question = task.question
-    lower = task.lower
-    upper = task.upper
-    audience = task.audience
+
+    task.progress = 10
+    task.save()
+
     model = task.model
+    content = ai.Content(message = task.input, video = task.file)
+    target = ai.Target(question=task.question, lower=task.lower, upper=task.upper, audience=task.audience)
+    ai.preprocess(model, content, target)
 
-    def create_prediction(message):
-        prediction = Prediction.create(
-            model = "gpt3.5-turbo",
-            message = message,
-            value = predict_impact(
-                model=model,
-                message=message.value,
-                question=question, lower=lower, upper=upper, audience=audience
-            )
-        )
-        return prediction.value
+    task.progress = 15
+    task.save()
 
-
-    logger.info(f"Analyzing task {task_id} with input: {task.input}")
-    if task.file is not None:
-        logger.info(f"File provided with task {task_id}")
-        logger.info(f"File size: {len(task.file)} bytes")
-        video_file = NamedTemporaryFile(delete=False)
-        video_file.write(task.file)
-        video_file.close()
-
-        text = transcribe_video(video_file.name)
-        os.remove(video_file.name)
-        task.input = "VIDEO TRANSCRIPT: " + text
-        task.file = None
-        task.save()
-
-    message = Message.create(
-        source = "USER",
-        value = task.input
-    )
-
-    if task.command == "predict":
-        prediction = create_prediction(message)
-        task.output = json.dumps({"prediction": prediction})
-        task.save()
-        return
+    output = {"message": content.message}
     
+    if task.command == "predict":
+        prediction = ai.predict(model, content, target)
+        output["prediction"] = prediction
+        task.output = json.dumps(output)
+        task.progress = 100
+        task.save()
+        return output
+
     if task.command == "generate":
-        suggestions = []
-        all_variants = []
+        prediction = ai.predict(model, content, target)
+        output["prediction"] = prediction
+        task.progress = 20
 
-        for o in generate_variants(message.value):
-            strategy = o["strategy"]; variants = o["variants"]
-            variants = [
-                Message.create(
-                    source = "BOT",
-                    value = variant
-                )
-                for variant in variants
-            ]
-            all_variants.extend(variants)
-            suggestions.append({
-                "strategy": strategy,
-                "variants": variants
-            })
+        variants = {x.message: x for x in ai.generate_mutations(content.message, 5)}
 
+        task.progress = 30
+        task.save()
 
+        # with ThreadPool(5) as pool:
+        #     predictions = pool.map(lambda x: ai.predict(model, ai.Content(message=x), target), variants.keys())
+        #     predictions = {x: y for x, y in zip(variants.keys(), predictions)}
 
-        variant_predictions = {k:v for k,v in ThreadPool(5).map(lambda v: (v.value, create_prediction(v)), all_variants)}
-        for suggestion in suggestions:
-            suggestion["score"] = sum([variant_predictions[variant.value] for variant in suggestion["variants"]]) / len(suggestion["variants"])
+        def task_callback(n_complete, lock):
+            with lock:
+                n_complete[0] += 1
+                print(f'Progress: {n_complete}/{len(variants)} tasks completed')
+                task.progress = 30 + int(70 * n_complete[0] / len(variants))
+                task.save()
+        def get_pred(variant):
+            return ai.predict(model, ai.Content(message=variant.message), target)
+        
+        n_complete = [0]
+        lock = threading.Lock()
 
-        # Filter to top 2 suggestions
-        suggestions = sorted(suggestions, key=lambda s: s["score"], reverse=True)[:3]
-        # Filter to top 2 variants per suggestion
-        for suggestion in suggestions:
-            suggestion["variants"] = sorted(suggestion["variants"], key=lambda v: variant_predictions[v.value], reverse=True)[:2]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            futures = []
+            for variant in variants.values():
+                future = executor.submit(get_pred, variant)
+                future.add_done_callback(lambda fut: task_callback(n_complete, lock))
+                futures.append(future)
 
-        output = {
-            "suggestions": [
-                {
-                    "strategy": suggestion["strategy"],
-                    # "score": suggestion["score"],
-                    "suggestions": [
-                        {
-                            "message": variant.value,
-                            "prediction": variant_predictions[variant.value]
-                        }
-                        for variant in suggestion["variants"]
-                    ]
-                }
-                for suggestion in suggestions
-            ]
-        }
+            concurrent.futures.wait(futures)
 
+        predictions = {k: future.result() for k, future in zip(variants.keys(), futures)}
+        message_variants = sorted(variants.values(), key=lambda v: predictions[v.message], reverse=True)[:3]
+
+        output["variants"] = [
+            {**message_variant.model_dump(), "prediction": predictions[message_variant.message]}
+            for message_variant in message_variants
+        ]
         task.output = json.dumps(output)
         task.save()
+        return output

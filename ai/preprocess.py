@@ -7,6 +7,7 @@ import subprocess
 import os
 logger = get_task_logger(__name__)
 from contextlib import contextmanager
+from ai.util import Content, Target
 
 @contextmanager
 def tempfilename(extension):
@@ -15,21 +16,21 @@ def tempfilename(extension):
     shutil.rmtree(dir)
 
 def transcribe_video(video_filename: str):
-    logger.info(f"Video file name: {video_filename}")
-    logger.info(f"Video file size: {os.path.getsize(video_filename)} bytes")
-
     with tempfilename(".wav") as audio_filename: #NamedTemporaryFile(delete=False, suffix=".wav").name
         command = f"ffmpeg -y -i {video_filename} -ab 160k -ac 2 -ar 44100 -vn {audio_filename}"
         subprocess.call(command, shell=True)
-
-        logger.info(f"Audio file name: {audio_filename}")
-        logger.info(f"Audio file size: {os.path.getsize(audio_filename)} bytes")
-
         with open(audio_filename, "rb") as file:
             transcription = openai_client().audio.transcriptions.create(
                 model="whisper-1", 
                 file=file
             )
-    response = transcription.text
+    return transcription.text
 
-    return response
+def preprocess(model:str, content:Content, target:Target):
+    if content.video is not None:
+        video_file = NamedTemporaryFile(delete=False)
+        video_file.write(content.video)
+        video_file.close()
+        text = transcribe_video(video_file.name)
+        os.remove(video_file.name)
+        content.message = text

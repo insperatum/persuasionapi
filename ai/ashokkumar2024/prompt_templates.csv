@@ -1,0 +1,3101 @@
+,spec_template_group,spec_group,all,blurb,study.type,condition.name,condition.text,outcome.name,outcome.text,outcome.min,outcome.max,outcome.lower,outcome.upper,scale.direction.intuitive,n_pages,slug,intro,profile_depth,profile_format,profile_traits,profile_pronoun,profile_noun,profile_idx,profile_ideology,profile_age,profile_ethnicity,profile_gender,profile_education,profile_party,profile_party_long,use_original_scale,outcome_scale_min,outcome_scale_max,scale_flip,outcome_format_question,prompt
+0,all,all.0,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.0,(We are interested in predicting how people respond to questions and interventions in social science research studies.),6,bio,['education' 'ideology' 'ethnicity' 'age' 'gender' 'party'],you,American,6320,liberal,50-59,white,female,college,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting how people respond to questions and interventions in social science research studies.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 50-59 year-old, white, female American with college education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+1,all,all.1,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.1,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,bio,['ideology' 'age' 'gender' 'ethnicity' 'party' 'education'],you,research participant,3938,liberal,30-39,white,female,graduate school,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 30-39 year-old, white, female research participant with graduate school education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+2,all,all.2,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.2,Can reading a message affect people’s attitudes and actions?,6,questions,['education' 'ideology' 'ethnicity' 'age' 'gender' 'party'],participant_x,research participant,7516,liberal,over 60,white,male,college,Democrat,Lean Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Lean Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+3,all,all.3,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.3,Can reading a message affect people’s attitudes and actions?,6,bio,['age' 'ethnicity' 'ideology' 'gender' 'party' 'education'],participant_x,research participant,1065,conservative,30-39,hispanic,male,college,Republican,Moderate Republican,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, 30-39 year-old, hispanic, male research participant with college education. Politically, Participant X identifies as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+4,all,all.4,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.4,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,bio,['age' 'education' 'ethnicity' 'party' 'gender' 'ideology'],participant_x,American,1764,conservative,50-59,white,female,some college,Republican,Moderate Republican,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, 50-59 year-old, white, female American with some college education. Politically, Participant X identifies as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+5,all,all.5,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.5,You will be asked to predict how people respond to various messages,6,questions,['gender' 'age' 'ethnicity' 'ideology' 'education' 'party'],participant_x,research participant,322,liberal,18-29,white,male,college,Democrat,Strong Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '18-29'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+6,all,all.6,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.6,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['education' 'ideology' 'age' 'ethnicity' 'gender' 'party'],you,American,659,conservative,over 60,white,male,college,Republican,Moderate Republican,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+7,all,all.7,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.7,(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology),6,questions,['education' 'age' 'ideology' 'party' 'gender' 'ethnicity'],participant_x,research participant,1090,moderate,40-49,white,male,college,Democrat,Lean Democrat,1,1,5,False,completion,"(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '40-49'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Lean Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+8,all,all.8,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.8,You will be asked to predict how people respond to various messages,6,bio,['age' 'ideology' 'ethnicity' 'gender' 'party' 'education'],participant_x,research participant,5237,liberal,over 60,white,male,some college,Democrat,Strong Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, over 60 year-old, white, male research participant with some college education. Politically, Participant X identifies as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+9,all,all.9,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.9,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,questions,['ideology' 'party' 'age' 'ethnicity' 'gender' 'education'],participant_x,research participant,6000,liberal,50-59,white,male,some college,Republican,Moderate Republican,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+10,all,all.10,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.10,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['ethnicity' 'ideology' 'party' 'education' 'gender' 'age'],you,research participant,6531,moderate,40-49,black,female,high school,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '40-49'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+11,all,all.11,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.11,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['party' 'education' 'age' 'gender' 'ethnicity' 'ideology'],participant_x,research participant,3578,liberal,over 60,black,male,some college,Democrat,Moderate Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+12,all,all.12,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.12,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['ideology' 'ethnicity' 'gender' 'education' 'age' 'party'],you,research participant,7264,liberal,30-39,white,male,some college,Democrat,Moderate Democrat,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 30-39 year-old, white, male research participant with some college education. Politically, You identify as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+13,all,all.13,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.13,Can reading a message affect people’s attitudes and actions?,6,bio,['party' 'gender' 'education' 'ethnicity' 'age' 'ideology'],participant_x,American,4492,conservative,50-59,hispanic,female,college,Republican,Moderate Republican,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, 50-59 year-old, hispanic, female American with college education. Politically, Participant X identifies as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+14,all,all.14,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.14,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,bio,['education' 'age' 'ethnicity' 'gender' 'ideology' 'party'],participant_x,American,3188,liberal,18-29,white,male,high school,Democrat,Strong Democrat,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 18-29 year-old, white, male American with high school education. Politically, Participant X identifies as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+15,all,all.15,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.15,You will be asked to predict how people respond to various messages,6,bio,['party' 'age' 'ideology' 'ethnicity' 'gender' 'education'],you,research participant,597,liberal,30-39,hispanic,female,some college,Democrat,Moderate Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 30-39 year-old, hispanic, female research participant with some college education. Politically, You identify as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+16,all,all.16,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.16,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,questions,['ideology' 'party' 'education' 'ethnicity' 'age' 'gender'],participant_x,research participant,7342,conservative,over 60,white,female,some college,Republican,Moderate Republican,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+17,all,all.17,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.17,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['education' 'age' 'party' 'gender' 'ethnicity' 'ideology'],you,American,5835,moderate,40-49,white,male,graduate school,Republican,Lean Republican,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '40-49'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Graduate School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Lean Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+18,all,all.18,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.18,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,bio,['age' 'ethnicity' 'education' 'party' 'ideology' 'gender'],participant_x,American,5488,liberal,50-59,hispanic,male,college,Democrat,Strong Democrat,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 50-59 year-old, hispanic, male American with college education. Politically, Participant X identifies as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+19,all,all.19,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.19,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['education' 'age' 'ideology' 'ethnicity' 'party' 'gender'],you,American,3141,liberal,30-39,hispanic,male,college,Democrat,Moderate Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '30-39'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Hispanic'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+20,all,all.20,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.20,Can reading a message affect people’s attitudes and actions?,6,bio,['ideology' 'ethnicity' 'party' 'education' 'age' 'gender'],participant_x,American,2858,liberal,over 60,other,male,some college,Democrat,Moderate Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, over 60 year-old,, male American with some college education. Politically, Participant X identifies as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+21,all,all.21,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.21,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,bio,['education' 'ideology' 'ethnicity' 'age' 'gender' 'party'],you,American,6946,liberal,18-29,white,female,graduate school,Democrat,Strong Democrat,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 18-29 year-old, white, female American with graduate school education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+22,all,all.22,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.22,Can reading a message affect people’s attitudes and actions?,6,bio,['gender' 'party' 'ethnicity' 'age' 'ideology' 'education'],you,American,5300,liberal,30-39,white,female,some college,Democrat,Strong Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 30-39 year-old, white, female American with some college education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+23,all,all.23,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.23,You will be asked to predict how people respond to various messages,6,questions,['age' 'ideology' 'party' 'education' 'gender' 'ethnicity'],participant_x,research participant,1687,liberal,30-39,white,male,college,Democrat,Lean Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '30-39'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Lean Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+24,all,all.24,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.24,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,bio,['party' 'ethnicity' 'age' 'gender' 'ideology' 'education'],participant_x,American,2903,liberal,over 60,white,female,college,Independent,Independent,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, over 60 year-old, white, female American with college education. Politically, Participant X identifies as 'Independent'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+25,all,all.25,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.25,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)",6,questions,['ideology' 'education' 'age' 'ethnicity' 'party' 'gender'],you,research participant,1415,liberal,40-49,white,female,college,Democrat,Lean Democrat,1,1,5,False,completion,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '40-49'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Lean Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+26,all,all.26,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.26,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['party' 'ideology' 'age' 'ethnicity' 'gender' 'education'],you,research participant,1790,moderate,50-59,black,female,college,Democrat,Moderate Democrat,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+27,all,all.27,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.27,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['age' 'ideology' 'party' 'ethnicity' 'gender' 'education'],participant_x,research participant,3594,liberal,over 60,black,female,college,Democrat,Strong Democrat,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, over 60 year-old, black, female research participant with college education. Politically, Participant X identifies as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+28,all,all.28,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.28,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['gender' 'ethnicity' 'ideology' 'party' 'age' 'education'],you,American,2585,conservative,40-49,white,female,college,Republican,Strong Republican,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a conservative, 40-49 year-old, white, female American with college education. Politically, You identify as 'Strong Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+29,all,all.29,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.29,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['education' 'ethnicity' 'party' 'gender' 'ideology' 'age'],you,research participant,6487,liberal,over 60,white,female,college,Democrat,Lean Democrat,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Lean Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+30,all,all.30,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.30,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['age' 'party' 'gender' 'ethnicity' 'education' 'ideology'],you,research participant,5395,liberal,over 60,white,male,college,Democrat,Lean Democrat,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Lean Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+31,all,all.31,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.31,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['party' 'education' 'ethnicity' 'gender' 'ideology' 'age'],you,American,1030,conservative,over 60,white,male,high school,Republican,Strong Republican,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a conservative, over 60 year-old, white, male American with high school education. Politically, You identify as 'Strong Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+32,all,all.32,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.32,(We are interested in predicting how people respond to questions and interventions in social science research studies.),6,questions,['age' 'ethnicity' 'education' 'ideology' 'party' 'gender'],you,research participant,5329,liberal,over 60,white,female,some college,Democrat,Moderate Democrat,1,1,5,False,completion,"(We are interested in predicting how people respond to questions and interventions in social science research studies.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+33,all,all.33,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.33,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,bio,['ethnicity' 'gender' 'ideology' 'age' 'education' 'party'],participant_x,research participant,5328,liberal,30-39,black,female,some college,Democrat,Strong Democrat,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 30-39 year-old, black, female research participant with some college education. Politically, Participant X identifies as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+34,all,all.34,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.34,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,questions,['age' 'gender' 'ethnicity' 'ideology' 'party' 'education'],you,American,6310,liberal,30-39,white,female,some college,Republican,Lean Republican,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '30-39'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Lean Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+35,all,all.35,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.35,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['age' 'education' 'gender' 'party' 'ideology' 'ethnicity'],participant_x,research participant,6460,conservative,18-29,white,male,college,Republican,Lean Republican,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, 18-29 year-old, white, male research participant with college education. Politically, Participant X identifies as 'Lean Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+36,all,all.36,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.36,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,bio,['gender' 'party' 'education' 'age' 'ideology' 'ethnicity'],participant_x,research participant,1017,moderate,30-39,white,female,college,Republican,Moderate Republican,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a politically-moderate, 30-39 year-old, white, female research participant with college education. Politically, Participant X identifies as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+37,all,all.37,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.37,You will be asked to predict how people respond to various messages,6,questions,['ethnicity' 'age' 'party' 'gender' 'education' 'ideology'],you,research participant,6514,liberal,40-49,white,female,high school,Republican,Strong Republican,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '40-49'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+38,all,all.38,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.38,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)",6,questions,['gender' 'ethnicity' 'education' 'party' 'age' 'ideology'],you,research participant,6044,liberal,30-39,black,male,college,Republican,Moderate Republican,1,1,5,False,completion,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '30-39'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+39,all,all.39,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.39,(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology),6,bio,['age' 'ethnicity' 'gender' 'party' 'education' 'ideology'],you,American,7460,conservative,40-49,white,male,college,Republican,Strong Republican,1,1,5,False,completion,"(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a conservative, 40-49 year-old, white, male American with college education. Politically, You identify as 'Strong Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+40,all,all.40,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.40,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['age' 'party' 'ethnicity' 'ideology' 'education' 'gender'],you,research participant,5639,liberal,over 60,white,male,some college,Republican,Moderate Republican,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+41,all,all.41,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.41,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)",6,questions,['education' 'gender' 'age' 'ethnicity' 'ideology' 'party'],you,research participant,6248,liberal,over 60,black,female,less than high school,Democrat,Moderate Democrat,1,1,5,False,completion,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Less Than High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+42,all,all.42,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.42,Can reading a message affect people’s attitudes and actions?,6,questions,['age' 'education' 'party' 'ethnicity' 'gender' 'ideology'],you,American,4395,conservative,50-59,other,female,college,Republican,Moderate Republican,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Other'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+43,all,all.43,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.43,Can reading a message affect people’s attitudes and actions?,6,bio,['age' 'ideology' 'ethnicity' 'party' 'gender' 'education'],you,research participant,3666,moderate,over 60,hispanic,male,high school,Democrat,Moderate Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a politically-moderate, over 60 year-old, hispanic, male research participant with high school education. Politically, You identify as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+44,all,all.44,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.44,(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology),6,questions,['gender' 'age' 'ideology' 'ethnicity' 'party' 'education'],you,American,2749,moderate,18-29,hispanic,female,college,Democrat,Moderate Democrat,1,1,5,False,completion,"(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '18-29'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Hispanic'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+45,all,all.45,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.45,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,questions,['gender' 'education' 'age' 'ethnicity' 'ideology' 'party'],you,research participant,5276,liberal,18-29,black,male,some college,Democrat,Lean Democrat,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '18-29'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Lean Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+46,all,all.46,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.46,Can reading a message affect people’s attitudes and actions?,6,questions,['party' 'ideology' 'gender' 'ethnicity' 'education' 'age'],participant_x,American,2214,liberal,over 60,white,female,college,Democrat,Moderate Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+47,all,all.47,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.47,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['party' 'gender' 'education' 'age' 'ideology' 'ethnicity'],participant_x,research participant,1387,conservative,50-59,white,female,some college,Republican,Moderate Republican,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+48,all,all.48,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.48,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,bio,['ethnicity' 'age' 'ideology' 'party' 'gender' 'education'],you,research participant,6329,liberal,40-49,black,male,some college,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 40-49 year-old, black, male research participant with some college education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+49,all,all.49,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.49,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,questions,['age' 'education' 'party' 'gender' 'ethnicity' 'ideology'],you,American,3085,moderate,40-49,hispanic,female,college,Republican,Moderate Republican,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '40-49'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Hispanic'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+50,all,all.50,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.50,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['party' 'ethnicity' 'age' 'ideology' 'education' 'gender'],participant_x,research participant,3948,conservative,over 60,white,female,college,Republican,Lean Republican,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, over 60 year-old, white, female research participant with college education. Politically, Participant X identifies as 'Lean Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+51,all,all.51,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.51,"As you complete the following task, take the perspective of a leading expert in social science.",6,questions,['party' 'education' 'ethnicity' 'age' 'gender' 'ideology'],you,American,1627,liberal,40-49,black,male,high school,Independent,Independent,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '40-49'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Independent'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+52,all,all.52,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.52,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,bio,['ideology' 'ethnicity' 'age' 'education' 'gender' 'party'],participant_x,research participant,1008,conservative,50-59,white,male,high school,Independent,Independent,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, 50-59 year-old, white, male research participant with high school education. Politically, Participant X identifies as 'Independent'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+53,all,all.53,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.53,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['gender' 'education' 'party' 'age' 'ethnicity' 'ideology'],you,American,3864,conservative,50-59,white,male,college,Republican,Strong Republican,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+54,all,all.54,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.54,Can reading a message affect people’s attitudes and actions?,6,questions,['education' 'age' 'ideology' 'party' 'ethnicity' 'gender'],you,American,2969,liberal,over 60,white,female,college,Independent,Independent,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Independent'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+55,all,all.55,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.55,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,bio,['party' 'ethnicity' 'ideology' 'gender' 'age' 'education'],participant_x,American,7375,moderate,40-49,black,male,graduate school,Democrat,Moderate Democrat,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a politically-moderate, 40-49 year-old, black, male American with graduate school education. Politically, Participant X identifies as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+56,all,all.56,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.56,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,bio,['age' 'party' 'ethnicity' 'ideology' 'education' 'gender'],participant_x,American,4016,liberal,over 60,white,male,some college,Democrat,Strong Democrat,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, over 60 year-old, white, male American with some college education. Politically, Participant X identifies as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+57,all,all.57,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.57,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,questions,['party' 'education' 'age' 'ideology' 'gender' 'ethnicity'],you,research participant,566,liberal,18-29,white,male,college,Democrat,Strong Democrat,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '18-29'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+58,all,all.58,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.58,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,bio,['gender' 'education' 'ideology' 'ethnicity' 'party' 'age'],you,research participant,1964,conservative,over 60,white,male,some college,Republican,Lean Republican,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a conservative, over 60 year-old, white, male research participant with some college education. Politically, You identify as 'Lean Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+59,all,all.59,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.59,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['party' 'gender' 'education' 'ideology' 'ethnicity' 'age'],you,research participant,1393,liberal,over 60,white,male,college,Democrat,Strong Democrat,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+60,all,all.60,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.60,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['ethnicity' 'gender' 'age' 'party' 'education' 'ideology'],you,American,5002,moderate,over 60,white,male,high school,Democrat,Moderate Democrat,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+61,all,all.61,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.61,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,bio,['age' 'education' 'ideology' 'party' 'gender' 'ethnicity'],you,American,1728,moderate,over 60,white,female,high school,Democrat,Strong Democrat,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a politically-moderate, over 60 year-old, white, female American with high school education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+62,all,all.62,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.62,You will be asked to predict how people respond to various messages,6,bio,['ethnicity' 'age' 'gender' 'education' 'party' 'ideology'],participant_x,research participant,7058,liberal,30-39,black,male,college,Republican,Moderate Republican,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 30-39 year-old, black, male research participant with college education. Politically, Participant X identifies as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+63,all,all.63,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.63,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['party' 'education' 'ethnicity' 'gender' 'ideology' 'age'],you,research participant,1380,liberal,over 60,black,female,some college,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+64,all,all.64,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.64,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,bio,['gender' 'education' 'ideology' 'ethnicity' 'age' 'party'],participant_x,American,6948,conservative,50-59,white,female,some college,Republican,Strong Republican,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, 50-59 year-old, white, female American with some college education. Politically, Participant X identifies as 'Strong Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+65,all,all.65,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.65,(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology),6,bio,['ethnicity' 'age' 'gender' 'ideology' 'party' 'education'],you,American,3962,liberal,40-49,white,male,some college,Democrat,Strong Democrat,1,1,5,False,completion,"(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 40-49 year-old, white, male American with some college education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+66,all,all.66,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.66,(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology),6,questions,['gender' 'party' 'education' 'ethnicity' 'ideology' 'age'],you,research participant,1275,liberal,over 60,white,male,high school,Independent,Independent,1,1,5,False,completion,"(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Independent'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+67,all,all.67,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.67,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['party' 'age' 'education' 'gender' 'ideology' 'ethnicity'],participant_x,American,5354,liberal,18-29,white,male,college,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '18-29'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+68,all,all.68,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.68,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,bio,['gender' 'party' 'age' 'ideology' 'ethnicity' 'education'],you,American,888,moderate,18-29,hispanic,male,high school,Democrat,Lean Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a politically-moderate, 18-29 year-old, hispanic, male American with high school education. Politically, You identify as 'Lean Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+69,all,all.69,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.69,Can reading a message affect people’s attitudes and actions?,6,bio,['ethnicity' 'education' 'ideology' 'gender' 'age' 'party'],you,American,5720,liberal,over 60,black,male,college,Democrat,Lean Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, over 60 year-old, black, male American with college education. Politically, You identify as 'Lean Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+70,all,all.70,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.70,Can reading a message affect people’s attitudes and actions?,6,bio,['age' 'ethnicity' 'party' 'education' 'ideology' 'gender'],you,American,3871,conservative,30-39,white,male,graduate school,Republican,Lean Republican,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a conservative, 30-39 year-old, white, male American with graduate school education. Politically, You identify as 'Lean Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+71,all,all.71,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.71,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,bio,['age' 'party' 'ideology' 'education' 'gender' 'ethnicity'],participant_x,research participant,217,liberal,30-39,white,female,high school,Democrat,Strong Democrat,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 30-39 year-old, white, female research participant with high school education. Politically, Participant X identifies as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+72,all,all.72,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.72,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['education' 'gender' 'ideology' 'ethnicity' 'age' 'party'],you,American,4554,liberal,over 60,white,female,high school,Democrat,Moderate Democrat,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, over 60 year-old, white, female American with high school education. Politically, You identify as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+73,all,all.73,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.73,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,questions,['age' 'gender' 'party' 'ethnicity' 'education' 'ideology'],you,American,4346,conservative,50-59,hispanic,female,some college,Democrat,Moderate Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Hispanic'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+74,all,all.74,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.74,"As you complete the following task, take the perspective of a leading expert in social science.",6,questions,['age' 'gender' 'education' 'party' 'ethnicity' 'ideology'],participant_x,American,2813,liberal,over 60,hispanic,male,less than high school,Democrat,Moderate Democrat,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'Hispanic'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Less Than High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+75,all,all.75,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.75,Can reading a message affect people’s attitudes and actions?,6,questions,['age' 'ethnicity' 'ideology' 'gender' 'party' 'education'],you,research participant,1368,conservative,over 60,white,male,college,Republican,Moderate Republican,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+76,all,all.76,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.76,You will be asked to predict how people respond to various messages,6,questions,['ethnicity' 'ideology' 'gender' 'party' 'education' 'age'],participant_x,research participant,4576,liberal,over 60,white,male,some college,Democrat,Strong Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+77,all,all.77,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.77,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,bio,['ideology' 'education' 'age' 'ethnicity' 'gender' 'party'],participant_x,American,5519,liberal,40-49,white,male,college,Republican,Strong Republican,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 40-49 year-old, white, male American with college education. Politically, Participant X identifies as 'Strong Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+78,all,all.78,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.78,You will be asked to predict how people respond to various messages,6,questions,['education' 'party' 'age' 'gender' 'ethnicity' 'ideology'],you,American,773,liberal,30-39,white,female,college,Democrat,Strong Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '30-39'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+79,all,all.79,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.79,(We are interested in predicting how people respond to questions and interventions in social science research studies.),6,questions,['age' 'gender' 'ethnicity' 'ideology' 'party' 'education'],you,American,3518,moderate,18-29,white,female,some college,Independent,Independent,1,1,5,False,completion,"(We are interested in predicting how people respond to questions and interventions in social science research studies.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '18-29'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Independent'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+80,all,all.80,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.80,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)",6,questions,['ideology' 'ethnicity' 'age' 'gender' 'education' 'party'],you,research participant,3625,conservative,50-59,white,female,some college,Republican,Moderate Republican,1,1,5,False,completion,"(For the following, keep in mind that the public has diverse attitudes and behaviors; people often provide very different answers to the same question.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+81,all,all.81,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.81,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)",6,bio,['ideology' 'ethnicity' 'education' 'age' 'party' 'gender'],participant_x,research participant,985,conservative,50-59,white,female,some college,Republican,Moderate Republican,1,1,5,False,completion,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a conservative, 50-59 year-old, white, female research participant with some college education. Politically, Participant X identifies as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+82,all,all.82,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.82,You will be asked to predict how people respond to various messages,6,bio,['party' 'gender' 'ethnicity' 'education' 'ideology' 'age'],participant_x,American,5649,liberal,50-59,white,female,college,Democrat,Moderate Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 50-59 year-old, white, female American with college education. Politically, Participant X identifies as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+83,all,all.83,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.83,(We are interested in predicting how people respond to questions and interventions in social science research studies.),6,questions,['age' 'gender' 'party' 'ethnicity' 'ideology' 'education'],you,American,1684,conservative,50-59,black,male,high school,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting how people respond to questions and interventions in social science research studies.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Conservative'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: '50-59'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'Black'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+84,all,all.84,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.84,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,bio,['ethnicity' 'ideology' 'party' 'gender' 'education' 'age'],participant_x,research participant,7449,liberal,18-29,white,male,high school,Republican,Lean Republican,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a liberal, 18-29 year-old, white, male research participant with high school education. Politically, Participant X identifies as 'Lean Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+85,all,all.85,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.85,You will be asked to predict how people respond to various messages,6,bio,['ethnicity' 'party' 'gender' 'age' 'ideology' 'education'],you,American,2772,liberal,50-59,white,female,some college,Democrat,Lean Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 50-59 year-old, white, female American with some college education. Politically, You identify as 'Lean Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+86,all,all.86,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.86,Try to be accurate when you make predictions about how different messages affect how people think and behave,6,questions,['age' 'ideology' 'gender' 'education' 'ethnicity' 'party'],participant_x,research participant,3550,liberal,18-29,white,male,college,Democrat,Strong Democrat,1,1,5,False,completion,"Try to be accurate when you make predictions about how different messages affect how people think and behave
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '18-29'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Male'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+87,all,all.87,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.87,Can reading a message affect people’s attitudes and actions?,6,bio,['ideology' 'age' 'party' 'gender' 'ethnicity' 'education'],you,American,2620,liberal,over 60,white,male,graduate school,Democrat,Moderate Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, over 60 year-old, white, male American with graduate school education. Politically, You identify as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+88,all,all.88,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.88,You will be asked to predict how people respond to various messages,6,questions,['ethnicity' 'ideology' 'education' 'party' 'age' 'gender'],participant_x,American,179,moderate,over 60,white,female,graduate school,Democrat,Strong Democrat,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Graduate School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+89,all,all.89,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.89,Can reading a message affect people’s attitudes and actions?,6,questions,['party' 'ideology' 'age' 'gender' 'ethnicity' 'education'],participant_x,American,5817,liberal,30-39,white,female,some college,Democrat,Moderate Democrat,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is an American. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: '30-39'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+90,all,all.90,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.90,Can reading a message affect people’s attitudes and actions?,6,bio,['party' 'ethnicity' 'age' 'gender' 'ideology' 'education'],you,American,6411,liberal,50-59,white,male,some college,Republican,Moderate Republican,1,1,5,False,completion,"Can reading a message affect people’s attitudes and actions?
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 50-59 year-old, white, male American with some college education. Politically, You identify as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+91,all,all.91,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.91,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,bio,['ideology' 'education' 'party' 'age' 'ethnicity' 'gender'],you,American,4156,moderate,40-49,other,female,college,Democrat,Moderate Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a politically-moderate, 40-49 year-old,, female American with college education. Politically, You identify as 'Moderate Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+92,all,all.92,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.92,"As you complete the following task, take the perspective of a leading expert in social science.",6,questions,['age' 'education' 'gender' 'party' 'ethnicity' 'ideology'],participant_x,research participant,2522,liberal,over 60,other,female,some college,Republican,Moderate Republican,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'Other'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'Some College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Moderate Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+93,all,all.93,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.93,(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology),6,bio,['ethnicity' 'education' 'party' 'gender' 'age' 'ideology'],you,American,3937,liberal,50-59,white,male,high school,Independent,Independent,1,1,5,False,completion,"(Keep in mind what is known about the public's beliefs and behaviors from research in the field of social psychology)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 50-59 year-old, white, male American with high school education. Politically, You identify as 'Independent'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+94,all,all.94,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.94,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)",6,questions,['party' 'education' 'gender' 'age' 'ideology' 'ethnicity'],you,research participant,738,liberal,over 60,white,female,college,Democrat,Strong Democrat,1,1,5,False,completion,"(For the following, keep in mind that people's beliefs and behaviors are malleable; their answers to questions often change based on the framing or information provided.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+You choose: 'Liberal'
+
+The next page of the survey says:
+> How old are you?
+
+You choose: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+You choose: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+You choose: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+You choose: 'College'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+You choose: 'Strong Democrat'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+95,all,all.95,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.95,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)",6,bio,['age' 'education' 'gender' 'ethnicity' 'ideology' 'party'],you,American,2015,liberal,40-49,white,female,college,Democrat,Strong Democrat,1,1,5,False,completion,"(We are interested in predicting the treatment effect of different messages on research participants' attitudes, beliefs, and behaviors.)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 40-49 year-old, white, female American with college education. Politically, You identify as 'Strong Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+96,all,all.96,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.96,You will be asked to predict how people respond to various messages,6,bio,['gender' 'education' 'ethnicity' 'ideology' 'party' 'age'],you,research participant,1579,conservative,over 60,white,female,college,Republican,Moderate Republican,1,1,5,False,completion,"You will be asked to predict how people respond to various messages
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a conservative, over 60 year-old, white, female research participant with college education. Politically, You identify as 'Moderate Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+97,all,all.97,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,8,all.97,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)",6,questions,['gender' 'education' 'party' 'ideology' 'ethnicity' 'age'],participant_x,research participant,6093,moderate,over 60,white,female,high school,Republican,Lean Republican,1,1,5,False,completion,"(As you complete the following task, keep in mind what is known about the public's beliefs and behaviors from research in the field of behavioral science)
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+Participant X is a research participant. Below is a transcript from an online survey.
+
+The first page of the survey says:
+> Are you liberal, moderate or conservative?
+
+Participant X chooses: 'Moderate'
+
+The next page of the survey says:
+> How old are you?
+
+Participant X chooses: 'Over 60'
+
+The next page of the survey says:
+> What is your ethnicity?
+
+Participant X chooses: 'White'
+
+The next page of the survey says:
+> What is your gender?
+
+Participant X chooses: 'Female'
+
+The next page of the survey says:
+> What is the maximum level of education you have attained?
+
+Participant X chooses: 'High School'
+
+The next page of the survey says:
+> What is your partisan affiliation?
+
+Participant X chooses: 'Lean Republican'
+
+The next page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+Participant X chooses: '"
+98,all,all.98,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.98,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['gender' 'age' 'ideology' 'education' 'ethnicity' 'party'],you,American,2090,liberal,30-39,white,male,high school,Republican,Lean Republican,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 30-39 year-old, white, male American with high school education. Politically, You identify as 'Lean Republican'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"
+99,all,all.99,{'weight': 1},,TESS,c,{CONDITION_TEXT},o,{OUTCOME_TEXT},1,5,{LOWER_LABEL},{UPPER_LABEL},1,2,all.99,"As you complete the following task, take the perspective of a leading expert in social science.",6,bio,['education' 'ideology' 'party' 'gender' 'ethnicity' 'age'],you,research participant,2102,liberal,50-59,white,female,college,Democrat,Lean Democrat,1,1,5,False,completion,"As you complete the following task, take the perspective of a leading expert in social science.
+--------------------
+
+Study description:
+> Social scientists often conduct research studies using online surveys. The text below is from one such survey conducted on a large, diverse population of research participants. 
+
+You are a liberal, 50-59 year-old, white, female research participant with college education. Politically, You identify as 'Lean Democrat'.
+
+The first page of the survey says:
+> {CONDITION_TEXT}
+
+The next page of the survey says:
+> {OUTCOME_TEXT}
+> Please choose a number from 1 ({LOWER_LABEL}) to 5 ({UPPER_LABEL})
+
+You choose: '"

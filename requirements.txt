@@ -33,6 +33,9 @@ wrapt==1.14.0
 zipp==3.8.0
 
 
+pandas
+numpy
+tiktoken
 
 peewee
 psycopg2

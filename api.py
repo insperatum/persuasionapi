@@ -74,7 +74,8 @@ def status(task_request: TaskRequest):
         return {
             "task_id": task.id,
             "input": task.input,
-            "status": "pending",
+            "progress": task.progress,
+            "status": "running",
         }
     else:
         return {

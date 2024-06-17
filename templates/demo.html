@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persuasion API</title>
+    <title>Attitude API</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <style>
         .collapsable {
@@ -86,8 +86,9 @@
             margin-bottom: 5px;
         }
         input[type="text"], textarea, input[type="file"], select {
+            box-shadow: 4px 4px 4px rgb(0,0,0,0.1);
             color: white;
-            border: 2px solid white;
+            border: 2px solid rgba(255,255,255,0.5);
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
@@ -113,12 +114,13 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
         #result {
-            padding: 10px;
-            /* background-color: white; */
-            /* font-family: 'Roboto', sans-serif; */
-            font-family: monospace;
+            padding: 20px;
+            /* background-color: rgba(255,255,255,0.8); */
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+            /* font-family: monospace; */
             font-size: 0.8em;
-            color: black;
+            /* color: black; */
         }
 
 
@@ -149,9 +151,58 @@
         hr {
             border: none;
         }
+
+        .variant {
+            border-radius: 10px;
+            margin-bottom: 0.5em;
+            margin-top: 0.5em;
+            padding: 0.5em;
+            background: rgba(255, 255, 255, 0.7);
+            color: black;
+        }
+
+        .highlight {
+            padding: 0 0.2em;
+            background: #fdff7b;
+        }
+
+        h1 {
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+
+
+
+
+
+    .progress-bar {
+        background: linear-gradient(45deg, #ff4bfc, #ff8521);
+        height: 5px;
+        border-radius: 5px;
+        transition: width 0.5s;
+        margin: 10px 0px;
+    }
     </style>
 </head>
 <body>
+
+<div class="" style="
+    padding: 10px 15px;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+">
+    <a href="/" style="
+    font-weight: bold;
+    /* font-size: 1.1em; */
+    margin: 0;
+    background: linear-gradient(45deg, #ff4bfc, #ff8521);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    ">
+        Attitude API
+    </a>
+</div>
 
 <div class="container">
     <!-- <div class="header">
@@ -159,33 +210,55 @@
     </div> -->
     <form id="messageForm">
         <div class="collapsable" id="apiFormGroup">
-            <h2>API</h2>
+            <!-- <h2>API</h2> -->
             <div style="display: flex; gap:30px">
-                <div class="form-group" style="min-width:550px;">
+                <!-- <div class="form-group" style="min-width:550px;">
                     Choose an API endpoint<br/>
                     <input type="radio" id="predict" name="endpoint" value="predict" class="radio-button">
-                    <label for="predict" class="radio-label">Predict effect</label>
+                    <label for="predict" class="radio-label">Score</label>
                     <input type="radio" id="edit" name="endpoint" value="edit" class="radio-button">
-                    <label for="edit" class="radio-label">Suggest edits</label>
-                </div>
+                    <label for="edit" class="radio-label">Edit</label>
+                </div> -->
+                <!-- <div class="form-group" style="min-width:550px;">
+                    Use the API to predict the persuasiveness of a message.
+                </div>  -->
+                <input type="hidden" id="predict" name="endpoint" value="edit" />
 
                 <div class="form-group">
-                    <label for="model">Model</label>
-                    <!-- Combobox -->
+                    <label for="model">Scoring model</label>
                     <select id="model" name="model">
-                        <option value="ashokkumar">Ashokkumar et al. 2024</option>
+                        <option value="basic">Basic</option>
+                        <option value="ashokkumar2024" selected>Ashokkumar et al. 2024</option>
                     </select>   
                 </div>
             </div>
+        </div>
+
+        <div class="collapsable" id="contentFormGroup">
+            <hr/>
+            <h2>Content</h2>
+            <div style="display: flex; gap:30px">
+                <div class="form-group" style="min-width:550px; width:550px;">
+                    <label for="message">Write a message you want to improve</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+        
+                <div class="form-group">
+                    <label for="file">...or upload a video</label>
+                    <input type="file" id="file" name="file">
+                </div>
+            </div>
+
         </div>
 
         <div class="collapsable" id="targetFormGroup">
             <hr/>
             <h2>Target</h2>
             <div style="display: flex; gap:30px">
-                <div class="form-group" style="min-width:550px">
-                    <label for="question">Write an outcome question:</label>
-                    <textarea id="question" name="question" rows="4">How much do you agree/disagree: "</textarea><br/>
+                <div class="form-group" style="min-width:550px; width:550px;">
+                    <label for="question">Write an outcome question describing
+                        the attitude/belief which the content aims to change</label>
+                    <textarea id="question" name="question" rows="4">How much do you agree/disagree with the following statement: "..."</textarea><br/>
                     <div style="margin-top:0.5em;">
                         <input type="text" id="lower" name="lower" value="Strongly disagree" style="width:150px !important"> to <input type="text" id="upper" name="upper" value="Strongly agree" style="width:150px !important">
                     </div>
@@ -195,37 +268,20 @@
                     <label for="audience">Audience</label>
                     <!-- Combobox -->
                     <select id="audience" name="audience">
-                        <option value="us-adults">U.S. Adults</option>
-                        <option value="18-25">18-25</option>
+                        <option value="us-adults" selected>U.S. Adults</option>
+                        <!-- <option value="18-25">18-25</option>
                         <option value="65+">65+</option>
                         <option value="democrats">Democrats</option>
                         <option value="independents">Independents</option>
-                        <option value="republicans">Republicans</option>
+                        <option value="republicans">Republicans</option> -->
                     </select>   
                 </div>
             </div>
 
-            <div class="collapsable" id="contentFormGroup">
-                <hr/>
-                <h2>Content</h2>
-                <div style="display: flex; gap:30px">
-                    <div class="form-group" style="min-width:550px;">
-                        <label for="message">Write a message</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-            
-                    <div class="form-group">
-                        <label for="file">...or upload a video</label>
-                        <input type="file" id="file" name="file">
-                    </div>
-                </div>
-    
-                <div class="collapsable" id="submitBtn" style="width:100%; text-align:center;">
-                    <button type="submit">Submit</button>
-                </div>
-            </div>
 
-    
+            <div class="collapsable" id="submitBtn" style="width:100%; text-align:center;">
+                <button type="submit">Submit</button>
+            </div>
         </div>
 
         
@@ -239,24 +295,31 @@
     document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(function() {
             document.getElementById('apiFormGroup').classList.add('expand');
+            document.getElementById('contentFormGroup').classList.add('expand');
         })
     });
 
-    document.getElementById('predict').addEventListener('change', function() {
-        document.getElementById('targetFormGroup').classList.add('expand');
-    });
-    document.getElementById('edit').addEventListener('change', function() {
-        document.getElementById('targetFormGroup').classList.add('expand');
-    });
-    document.getElementById('question').addEventListener('input', function() {
-        document.getElementById('contentFormGroup').classList.add('expand');
-    });
+    // document.getElementById('predict').addEventListener('change', function() {
+    //     document.getElementById('targetFormGroup').classList.add('expand');
+    // });
+    // document.getElementById('edit').addEventListener('change', function() {
+    //     document.getElementById('targetFormGroup').classList.add('expand');
+    // });
+
     document.getElementById('message').addEventListener('input', function() {
-        document.getElementById('submitBtn').classList.add('expand');
+        document.getElementById('targetFormGroup').classList.add('expand');
+        // document.getElementById('submitBtn').classList.add('expand');
     });
     document.getElementById('file').addEventListener('change', function() {
+        document.getElementById('targetFormGroup').classList.add('expand');
+        // document.getElementById('submitBtn').classList.add('expand');
+    });
+
+    document.getElementById('question').addEventListener('input', function() {
+        // document.getElementById('contentFormGroup').classList.add('expand');
         document.getElementById('submitBtn').classList.add('expand');
     });
+
 
     document.getElementById('messageForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -299,16 +362,16 @@
                 document.getElementById('progress').innerText = 'An error occurred: ' + JSON.stringify(data);
             } else {
                 const taskId = data.task_id;
-                document.getElementById('progress').innerHTML = 'Thinking';
+                document.getElementById('progress').innerHTML = 'Thinking...<br/><div class="progress-bar" id="myProgressBar" style="width: 0%;"></div>';
                 // Animate ellipsis
-                setInterval(() => {
-                    const progress = document.getElementById('progress').innerText;
-                    if (progress.length < 11) {
-                        document.getElementById('progress').innerText += '.';
-                    } else {
-                        document.getElementById('progress').innerText = 'Thinking';
-                    }
-                }, 500)
+                // setInterval(() => {
+                //     const progress = document.getElementById('progress').innerText;
+                //     if (progress.length < 11) {
+                //         document.getElementById('progress').innerText += '.';
+                //     } else {
+                //         document.getElementById('progress').innerText = 'Thinking';
+                //     }
+                // }, 500)
 
 
                 checkStatus(taskId);
@@ -331,34 +394,87 @@
         })
         .then(response => response.json())
         .then(data => {
+            if(data.status == "running") {
+                document.getElementById('myProgressBar').style.width = data.progress + '%';
+            }
             if (data.status === 'completed') {
-                console.log(data.output)
-                document.getElementById('result').innerHTML = "<h1>API Response</h1>"
+                document.getElementById('myProgressBar').style.width = data.progress + '%';
                 
-                // if output has key "prediction"
-                if (data.output.prediction) {
-                    document.getElementById('result').innerHTML += `<b>Prediction:</b> ${data.output.prediction}`
-                }
+                console.log(data.output)
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').innerHTML = ""
+                
 
-                if(data.output.suggestions) {
-                    // output is a list of suggestions, each with a score and a list of variants
-                    data.output.suggestions.forEach(x => {
-                        s = `<b>${x.strategy}</b><br><ul>`
-                        x.suggestions.forEach(suggestion => {
-                            s += `<li>"${suggestion.message}"</li> <i>(prediction: ${suggestion.prediction})</i>`
-                        });
-                        s += "</ul>"
+                // if (data.output.prediction) {
+                //     document.getElementById('result').innerHTML += "<h1>Score</h1>"
+                //     document.getElementById('result').innerHTML += `<b>Prediction:</b> ${data.output.prediction}`
+                // }
+
+                // if(data.output.suggestions) {
+                //     // output is a list of suggestions, each with a score and a list of variants
+                //     data.output.suggestions.forEach(x => {
+                //         s = `<b>${x.strategy}</b><br><ul>`
+                //         x.suggestions.forEach(suggestion => {
+                //             s += `<li>"${suggestion.message}"</li> <i>(prediction: ${suggestion.prediction})</i>`
+                //         });
+                //         s += "</ul>"
                         
-                        const suggestionElement = document.createElement('div');
-                        suggestionElement.innerHTML = s
+                //         const suggestionElement = document.createElement('div');
+                //         suggestionElement.innerHTML = s
 
                         
-                        document.getElementById('result').appendChild(suggestionElement);
+                //         document.getElementById('result').appendChild(suggestionElement);
+                //     });
+                // }
+
+                document.getElementById('result').innerHTML += "<h1>Input</h1>"
+                s = data.output.message
+                const variantElement = document.createElement('div');
+                        variantElement.classList.add('variant');
+                        variantElement.innerHTML = `${s} <br> <div style="
+    width: 100%;
+    text-align: right;
+    font-family:sans-serif
+    ">Score: ${Math.round(data.output.prediction*100)/100}</div>`
+                document.getElementById('result').appendChild(variantElement);
+
+                if(data.output.variants) {
+                    document.getElementById('result').innerHTML += "<h1>Top suggestions</h1>"
+                    
+
+                    data.output.variants.forEach((x, index) => {
+                        original_section = x.original_section
+                        highlight_start = x.highlight_start
+                        highlight_end = x.highlight_end
+                        
+                        document.getElementById('result').innerHTML += (index+1) + ". " + '<i>"' + original_section + '"</i> - ' + x.reason
+
+                        s = x.message.substring(0, highlight_start) +
+                                "<span class='highlight'>" +
+                                x.message.substring(highlight_start, highlight_end) + "</span>" + x.message.substring(highlight_end);
+                        
+                        
+                        const variantElement = document.createElement('div');
+                        variantElement.classList.add('variant');
+                        variantElement.innerHTML = `${s} <br> <div style="
+    width: 100%;
+    text-align: right;
+    font-family:sans-serif
+    ">Score: ${Math.round(x.prediction*100)/100}</div>`
+                        document.getElementById('result').appendChild(variantElement);
+
                     });
                 }
 
-                document.getElementById('progress').style.display = 'none';
-                document.getElementById('result').classList.add('expand-long');
+                // document.getElementById('progress').classList.remove('expand');
+                // document.getElementById('progress').style.display = 'none';
+                document.getElementById('myProgressBar').style.width = '100%';
+                //When it's complete, make it hidden
+                setTimeout(function() {
+                    document.getElementById('progress').style.display = 'none'
+                    document.getElementById('result').classList.add('expand-long');
+                }, 1000);
+                
             } else {
                 setTimeout(() => checkStatus(taskId), 200);
             }
