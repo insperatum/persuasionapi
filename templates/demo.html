@@ -265,7 +265,11 @@
         document.getElementById('submitBtn').classList.remove('expand');
 
         const message = document.getElementById('message').value;
-        const apiEndpoint = 'https://api.rhetorical.org/generate';
+        if(document.getElementById('predict').checked) {
+            apiEndpoint = 'https://api.rhetorical.org/predict';
+        } else {
+            apiEndpoint = 'https://api.rhetorical.org/generate';
+        }
 
         const formData = new FormData();
         const fileInput = document.querySelector('input[type="file"]');
@@ -320,24 +324,32 @@
         .then(data => {
             if (data.status === 'completed') {
                 console.log(data.output)
-                document.getElementById('result').innerHTML = "<h2>API Response:</h2>"
+                document.getElementById('result').innerHTML = "<h1>API Response:</h1>"
                 
-                // output is a list of suggestions, each with a score and a list of variants
-                data.output.forEach(x => {
-                    s = `<b>${x.strategy}</b><br><ul>`
-                    x.suggestions.forEach(suggestion => {
-                        s += `<li>"${suggestion.message}"</li> <i>(prediction: ${suggestion.prediction})</i>`
-                    });
-                    s += "</ul>"
-                    
-                    const suggestionElement = document.createElement('div');
-                    suggestionElement.innerHTML = s
+                // if output has key "prediction"
+                if (data.output.prediction) {
+                    document.getElementById('result').innerHTML += `<b>Prediction:</b> ${data.output.prediction}`
+                }
 
-                    document.getElementById('progress').style.display = 'none';
-                    document.getElementById('result').appendChild(suggestionElement);
-                    document.getElementById('result').classList.add('expand-long');
-                });
-                // data.output
+                if(data.output.suggestions) {
+                    // output is a list of suggestions, each with a score and a list of variants
+                    data.output.suggestions.forEach(x => {
+                        s = `<b>${x.strategy}</b><br><ul>`
+                        x.suggestions.forEach(suggestion => {
+                            s += `<li>"${suggestion.message}"</li> <i>(prediction: ${suggestion.prediction})</i>`
+                        });
+                        s += "</ul>"
+                        
+                        const suggestionElement = document.createElement('div');
+                        suggestionElement.innerHTML = s
+
+                        
+                        document.getElementById('result').appendChild(suggestionElement);
+                    });
+                }
+
+                document.getElementById('progress').style.display = 'none';
+                document.getElementById('result').classList.add('expand-long');
             } else {
                 setTimeout(() => checkStatus(taskId), 200);
             }

@@ -44,15 +44,21 @@ async def redirect_example():
 async def redirect_example():
     return RedirectResponse(url="/web/demo")
 
+@app.post("/predict")
+async def predict(message:str = Form(""), file: Union[UploadFile, None] = None):
+    if not file and not message: return {"message": "No data sent"}
+    if file: file = await file.read()
+
+    task = Task.create(command="predict", input=message, file=file)
+    analyze.delay(task.id)
+    return {"task_id": task.id}
 
 @app.post("/generate")
 async def generate(message:str = Form(""), file: Union[UploadFile, None] = None):
-    if not file and not message:
-        return {"message": "No data sent"}
-
-    if file:
-        file = await file.read()
-    task = Task.create(input=message, file=file)
+    if not file and not message: return {"message": "No data sent"}
+    if file: file = await file.read()
+    
+    task = Task.create(command="generate", input=message, file=file)
     analyze.delay(task.id)
     return {"task_id": task.id}
 

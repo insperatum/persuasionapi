@@ -8,6 +8,7 @@ class BaseModel(Model):
 
 class Task(BaseModel):
     id = CharField(default=lambda: uuid.uuid4().hex, primary_key=True)
+    command = CharField()
     input = TextField(null=True)
     file = BlobField(null=True)
     output = TextField(null=True)
