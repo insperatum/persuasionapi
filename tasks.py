@@ -73,21 +73,22 @@ def analyze(task_id:str):
     for suggestion in suggestions:
         suggestion["variants"] = sorted(suggestion["variants"], key=lambda v: variant_predictions[v.value], reverse=True)[:2]
 
-    output = [
-        {
-            "strategy": suggestion["strategy"],
-            # "score": suggestion["score"],
-            "suggestions": [
-                {
-                    "message": variant.value,
-                    "prediction": variant_predictions[variant.value]
-                }
-                for variant in suggestion["variants"]
-            ]
-        }
-        for suggestion in suggestions
-    ]
-    
+    output = {
+        "suggestions": [
+            {
+                "strategy": suggestion["strategy"],
+                # "score": suggestion["score"],
+                "suggestions": [
+                    {
+                        "message": variant.value,
+                        "prediction": variant_predictions[variant.value]
+                    }
+                    for variant in suggestion["variants"]
+                ]
+            }
+            for suggestion in suggestions
+        ]
+    }
 
     task.output = json.dumps(output)
     task.save()
