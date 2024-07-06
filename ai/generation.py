@@ -63,7 +63,7 @@ class Generation(BaseModel):
     highlight_start: Optional[int]
     highlight_end: Optional[int]
 
-def generate_mutations(message: str, n: int=5): #target:Target, n: int=3):
+def generate_mutations(message: str, n: int=8): #target:Target, n: int=3):
     N_variants = n
 
     class MessageVariant(BaseModel):
