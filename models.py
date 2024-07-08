@@ -42,5 +42,5 @@ class Task(BaseModel):
 
 # Create the tables
 db.connect()
-db.drop_tables([Task])#, Message, Prediction]) # TODO: peewee-db-evolve
+# db.drop_tables([Task])#, Message, Prediction]) # TODO: peewee-db-evolve
 db.create_tables([Task])#, Message, Prediction])
