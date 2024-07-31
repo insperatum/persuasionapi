@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, List
 from fastapi import FastAPI, File, Form, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.wsgi import WSGIMiddleware
@@ -9,8 +9,8 @@ from pydantic import BaseModel
 from fastapi.responses import RedirectResponse
 
 
-from models import Task
-from tasks import analyze
+from models import Task, Job
+from tasks import analyze, run_job
 import json
 
 flask_app = Flask(__name__)
@@ -64,9 +64,9 @@ async def generate(message:str = Form(""), file: Union[UploadFile, None] = None,
     analyze.delay(task.id)
     return {"task_id": task.id}
 
-
 class TaskRequest(BaseModel):
     task_id: str
+    
 @app.post("/status")
 def status(task_request: TaskRequest):
     task = Task.get(id=task_request.task_id)
@@ -84,3 +84,67 @@ def status(task_request: TaskRequest):
             "status": "completed",
             "output": json.loads(task.output),
         }
+    
+
+
+
+
+#### New API ####
+
+class Content(BaseModel):
+    name: str
+    text: str
+
+class CompareInput(BaseModel):
+    content: List[Content]
+    question: str
+    lower: str
+    upper: str
+
+class OutputItem(BaseModel):
+    job_id: str
+
+@app.post("/compare", response_model=OutputItem)
+async def compare(data: CompareInput):
+    
+    job = Job.create(command="compare", input=data.model_dump())
+    run_job.delay(job.id)
+    return {"job_id": job.id}
+
+@app.post("/job")
+def job(job_id: str):
+    job = Job.get(id=job_id)
+    if job.output is None:
+        return {
+            "job_id": job.id,
+            "input": job.input,
+            "status": "running",
+            "progress": job.progress,
+        }
+    else:
+        return {
+            "job_id": job.id,
+            "input": job.input,
+            "status": "completed",
+            "output": job.output,
+        }
+
+@app.post("/status")
+def status(task_request: TaskRequest):
+    task = Task.get(id=task_request.task_id)
+    if task.output is None:
+        return {
+            "task_id": task.id,
+            "input": task.input,
+            "progress": task.progress,
+            "status": "running",
+        }
+    else:
+        return {
+            "task_id": task.id,
+            "input": task.input,
+            "status": "completed",
+            "output": json.loads(task.output),
+        }
+
+

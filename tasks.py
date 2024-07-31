@@ -3,7 +3,7 @@ from celery import Celery
 from celery.utils.log import get_task_logger
 
 import ai
-from models import Task
+from models import Task, Job
 # from multiprocessing.pool import ThreadPool
 import threading
 import concurrent.futures
@@ -11,6 +11,36 @@ import json
 
 app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
+
+
+@app.task
+def run_job(job_id:str):
+    job = Job.get(id=job_id)
+
+    job.progress = 10; job.save()
+
+    if job.command == "compare":
+        import time
+        time.sleep(5)
+        job.progress = 20; job.save()
+        time.sleep(5)
+        job.progress = 30; job.save()
+        time.sleep(5)
+        
+        content = job.input['content']
+        question = job.input['question']
+        lower = job.input['lower']
+        upper = job.input['upper']
+
+        output = [
+            {"name": c['name'], "foo": 4}
+            for c in content
+        ]
+        job.output = output
+        job.progress = 100
+        job.save()
+
+        return job.output
 
 @app.task
 def analyze(task_id:str):
