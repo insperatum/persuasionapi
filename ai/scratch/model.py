@@ -174,7 +174,8 @@ model_id = "gpt-4o-mini"
 def predict(message: str, target_attitude: str, min_label:str, max_label:str):
     predictive_model = PredictiveModel(model_name=model_name, model_id=model_id)
     result = predictive_model.predict(message, target_attitude, min_label, max_label)
-    return (result["prediction"]-1)/4
+    # return (result["prediction"]-1)/4
+    return result["prediction"]
 
 # if __name__ == "__main__":
 #     instances = pd.read_csv("~/projects/persuasion-data/output/all_instances.csv")

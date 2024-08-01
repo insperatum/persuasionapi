@@ -24,7 +24,29 @@ def main():
 def demo():
     return render_template('demo.html')
 
-app = FastAPI()
+
+
+# description = """
+# An API for simulated RCTs
+# """ # This can be many lines, markdown
+
+tags_metadata = [
+    {
+        "name": "compare",
+        "description": "Run an RCT simulation",
+    },
+    {
+        "name": "job",
+        "description": "Get the result of a job",
+    },
+]
+
+app = FastAPI(
+    title="Attitude API",
+    summary="An API for simulated RCTs",
+    openapi_tags=tags_metadata,
+)
+
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
@@ -44,7 +66,7 @@ async def redirect_example():
 async def redirect_example():
     return RedirectResponse(url="/web/demo")
 
-@app.post("/predict")
+@app.post("/predict", include_in_schema=False)
 async def predict(message:str = Form(""), file: Union[UploadFile, None] = None, model:str = Form(""), question:str = Form(""), lower:str = Form(""), upper:str = Form(""), audience:str = Form("us-adults")):
     # TODO add validation
     if not file and not message: return {"message": "No data sent"}
@@ -54,7 +76,7 @@ async def predict(message:str = Form(""), file: Union[UploadFile, None] = None, 
     analyze.delay(task.id)
     return {"task_id": task.id}
 
-@app.post("/generate")
+@app.post("/generate", include_in_schema=False)
 async def generate(message:str = Form(""), file: Union[UploadFile, None] = None, model:str = Form(""), question:str = Form(""), lower:str = Form(""), upper:str = Form(""), audience:str = Form("us-adults")):
     # TODO add validation
     if not file and not message: return {"message": "No data sent"}
@@ -67,7 +89,7 @@ async def generate(message:str = Form(""), file: Union[UploadFile, None] = None,
 class TaskRequest(BaseModel):
     task_id: str
     
-@app.post("/status")
+@app.post("/status", include_in_schema=False)
 def status(task_request: TaskRequest):
     task = Task.get(id=task_request.task_id)
     if task.output is None:
@@ -107,13 +129,14 @@ class CompareInput(BaseModel):
 class OutputItem(BaseModel):
     job_id: str
 
-@app.post("/compare", response_model=OutputItem)
+
+@app.post("/compare", response_model=OutputItem, tags=["compare"])
 async def compare(data: CompareInput):
     job = Job.create(command="compare", input=data.model_dump())
     run_job.delay(job.id)
     return {"job_id": job.id}
 
-@app.post("/job")
+@app.post("/job", tags=["job"])
 def job(job_id: str):
     job = Job.get(id=job_id)
     if job.output is None:
@@ -130,23 +153,3 @@ def job(job_id: str):
             "status": "completed",
             "output": job.output,
         }
-
-@app.post("/status")
-def status(task_request: TaskRequest):
-    task = Task.get(id=task_request.task_id)
-    if task.output is None:
-        return {
-            "task_id": task.id,
-            "input": task.input,
-            "progress": task.progress,
-            "status": "running",
-        }
-    else:
-        return {
-            "task_id": task.id,
-            "input": task.input,
-            "status": "completed",
-            "output": json.loads(task.output),
-        }
-
-

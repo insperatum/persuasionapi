@@ -46,14 +46,18 @@ def run_job(job_id:str):
 
             import numpy as np
             predictions = np.array(predictions)
-            if predictions.std() == 0:
-                zs = (predictions - predictions.mean())
-            else:
-                zs = (predictions - predictions.mean()) / predictions.std()
+            predictions_demean = predictions - predictions.mean()
+            # We want softmax(predictions_demean * 1.914452)
+            probs = np.exp(predictions_demean * 1.914452) / np.exp(predictions_demean * 1.914452).sum()
+
+            # if predictions.std() == 0:
+            #     zs = (predictions - predictions.mean())
+            # else:
+            #     zs = (predictions - predictions.mean()) / predictions.std()
 
             output = [
-                {"name": content["name"], "z": z}
-                for content, z in zip(contents, zs)
+                {"name": content["name"], "prob": prob}
+                for content, prob in zip(contents, probs)
             ]
 
             job.output = output
