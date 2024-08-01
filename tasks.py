@@ -8,6 +8,7 @@ from models import Task, Job
 import threading
 import concurrent.futures
 import json
+import pandas as pd
 
 app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
@@ -20,22 +21,40 @@ def run_job(job_id:str):
     job.progress = 10; job.save()
 
     if job.command == "compare":
-        import time
-        time.sleep(5)
-        job.progress = 20; job.save()
-        time.sleep(5)
-        job.progress = 30; job.save()
-        time.sleep(5)
-        
-        content = job.input['content']
-        question = job.input['question']
-        lower = job.input['lower']
-        upper = job.input['upper']
+        contents = job.input['contents']
+        outcomes = job.input['outcomes']
+
+        from ai.scratch.model import predict
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            futures = {}
+            for i, content in enumerate(contents):
+                for j, outcome in enumerate(outcomes):
+                    future = executor.submit(predict, content["text"], outcome["question"], outcome["label_bad"], outcome["label_good"])
+                    futures[future] = (i, j)
+
+            df = pd.DataFrame()
+            for k, future in enumerate(concurrent.futures.as_completed(futures)):
+                i, j = futures[future]
+                df = pd.concat([df, pd.DataFrame([{"i": i, "j": j, "prediction": future.result()}])])
+                job.progress = 10 + int(90 * k / len(futures)); job.save()
+            
+        predictions = []
+        for i, content in enumerate(contents):
+            predictions.append(df[df.i == i].prediction.mean())
+
+        import numpy as np
+        predictions = np.array(predictions)
+        if predictions.std() == 0:
+            zs = (predictions - predictions.mean())
+        else:
+            zs = (predictions - predictions.mean()) / predictions.std()
 
         output = [
-            {"name": c['name'], "foo": 4}
-            for c in content
+            {"name": content["name"], "z": z}
+            for content, z in zip(contents, zs)
         ]
+
         job.output = output
         job.progress = 100
         job.save()

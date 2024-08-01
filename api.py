@@ -95,18 +95,20 @@ class Content(BaseModel):
     name: str
     text: str
 
-class CompareInput(BaseModel):
-    content: List[Content]
+class Outcome(BaseModel):
     question: str
-    lower: str
-    upper: str
+    label_good: str
+    label_bad: str
+
+class CompareInput(BaseModel):
+    contents: List[Content]
+    outcomes: List[Outcome]
 
 class OutputItem(BaseModel):
     job_id: str
 
 @app.post("/compare", response_model=OutputItem)
 async def compare(data: CompareInput):
-    
     job = Job.create(command="compare", input=data.model_dump())
     run_job.delay(job.id)
     return {"job_id": job.id}

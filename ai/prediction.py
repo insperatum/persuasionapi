@@ -11,3 +11,4 @@ def predict(model: str, content: Content, target: Target) -> float:
 
     else:
         raise NotImplementedError()
+
