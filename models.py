@@ -3,10 +3,16 @@ from database import db
 import uuid
 import pydantic
 import json
+import secrets
 
 class BaseModel(Model):
     class Meta:
         database = db
+
+class User(BaseModel):
+    id = TextField(primary_key=True)
+    api_key = TextField(default=lambda: secrets.token_hex(32))
+    credit = FloatField(default=lambda: 0.0)
 
 class JSONField(TextField):
     def db_value(self, value):
@@ -67,4 +73,4 @@ class Task(BaseModel):
 # Create the tables
 db.connect()
 # db.drop_tables([Task])#, Message, Prediction]) # TODO: peewee-db-evolve
-db.create_tables([Task, Job])#, Message, Prediction])
+db.create_tables([Task, Job, User])#, Message, Prediction])
