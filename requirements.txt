@@ -36,6 +36,8 @@ zipp==3.8.0
 pandas
 numpy
 tiktoken
+backoff
+scipy
 
 peewee
 psycopg2

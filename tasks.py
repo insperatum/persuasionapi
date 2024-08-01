@@ -20,46 +20,56 @@ def run_job(job_id:str):
 
     job.progress = 10; job.save()
 
-    if job.command == "compare":
-        contents = job.input['contents']
-        outcomes = job.input['outcomes']
+    try:
+        if job.command == "compare":
+            contents = job.input['contents']
+            outcomes = job.input['outcomes']
 
-        from ai.scratch.model import predict
+            from ai.scratch.model import predict
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-            futures = {}
+            with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+                futures = {}
+                for i, content in enumerate(contents):
+                    for j, outcome in enumerate(outcomes):
+                        future = executor.submit(predict, content["text"], outcome["question"], outcome["label_bad"], outcome["label_good"])
+                        futures[future] = (i, j)
+
+                df = pd.DataFrame()
+                for k, future in enumerate(concurrent.futures.as_completed(futures)):
+                    i, j = futures[future]
+                    df = pd.concat([df, pd.DataFrame([{"i": i, "j": j, "prediction": future.result()}])])
+                    job.progress = 10 + int(90 * k / len(futures)); job.save()
+                
+            predictions = []
             for i, content in enumerate(contents):
-                for j, outcome in enumerate(outcomes):
-                    future = executor.submit(predict, content["text"], outcome["question"], outcome["label_bad"], outcome["label_good"])
-                    futures[future] = (i, j)
+                predictions.append(df[df.i == i].prediction.mean())
 
-            df = pd.DataFrame()
-            for k, future in enumerate(concurrent.futures.as_completed(futures)):
-                i, j = futures[future]
-                df = pd.concat([df, pd.DataFrame([{"i": i, "j": j, "prediction": future.result()}])])
-                job.progress = 10 + int(90 * k / len(futures)); job.save()
-            
-        predictions = []
-        for i, content in enumerate(contents):
-            predictions.append(df[df.i == i].prediction.mean())
+            import numpy as np
+            predictions = np.array(predictions)
+            if predictions.std() == 0:
+                zs = (predictions - predictions.mean())
+            else:
+                zs = (predictions - predictions.mean()) / predictions.std()
 
-        import numpy as np
-        predictions = np.array(predictions)
-        if predictions.std() == 0:
-            zs = (predictions - predictions.mean())
-        else:
-            zs = (predictions - predictions.mean()) / predictions.std()
+            output = [
+                {"name": content["name"], "z": z}
+                for content, z in zip(contents, zs)
+            ]
 
-        output = [
-            {"name": content["name"], "z": z}
-            for content, z in zip(contents, zs)
-        ]
+            job.output = output
+            job.progress = 100
+            job.save()
 
-        job.output = output
-        job.progress = 100
+            return job.output
+    except Exception as e:
+        job.output = {
+            "job_id": job.id,
+            "input": job.input,
+            "progress": job.progress,
+            "status": "failed",
+        }
         job.save()
-
-        return job.output
+        raise e
 
 @app.task
 def analyze(task_id:str):
