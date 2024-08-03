@@ -154,7 +154,9 @@ Please answer with your own opinion, on a scale from 1 ({min_label_}) to 5 ({max
                 val = 6-val
             return val
 
-        vals = [run_profile(profile) for profile in profiles]
+        # vals = [run_profile(profile) for profile in profiles]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            vals = list(executor.map(run_profile, profiles))
         return {"profile_values":vals, "prediction": np.mean(vals)}
     
 
