@@ -14,14 +14,14 @@ app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
 
 
-def get_predictions(contents, outcomes, callback=lambda pct: None):
+def get_predictions(contents, outcomes, callback=lambda pct: None, model_id=None):
     from ai.scratch.model import predict
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
         futures = {}
         for i, content in enumerate(contents):
             for j, outcome in enumerate(outcomes):
-                future = executor.submit(predict, content["text"], outcome["question"], outcome["label_bad"], outcome["label_good"])
+                future = executor.submit(predict, content["text"], outcome["question"], outcome["label_bad"], outcome["label_good"], **({"model_id": model_id} if model_id else {}))
                 futures[future] = (i, j)
 
         df = pd.DataFrame()
@@ -63,6 +63,7 @@ def run_job(job_id:str):
 
     try:
         if job.command == "compare":
+            # model_id = job.input.get("model_id")
             contents = job.input['contents']
             outcomes = job.input['outcomes']
 
@@ -78,11 +79,13 @@ def run_job(job_id:str):
         
         elif job.command == "revise":
             from ai.llamathon.model import generate_n_alternatives
-            print("Generating alternatives")
+            print("Generating suggestions...")
+            job.output = "Generating alternatives..."; job.save()
             def callback(pct):
                 print("Progress:", pct, "%")
                 job.progress = 10 + int(60 * pct); job.save()
 
+            model_id = job.input.get("model_id")
             content = job.input["content"]
             outcome = job.input["outcome"]
             alternatives = generate_n_alternatives(
@@ -94,6 +97,8 @@ def run_job(job_id:str):
             )
             print("Finished generating alternatives")
 
+
+            job.output = "Simulating human responses..."; job.save()
             contents = [{"name": f"message{i}", "text": alternative} for i, alternative in enumerate(alternatives)]
             outcomes = [
                 {"question": outcome["question"], "label_good": outcome["label_good"], "label_bad": outcome["label_bad"]}
@@ -110,7 +115,8 @@ def run_job(job_id:str):
                     {"name": "original_message", "text": content["text"]},
                     {"name": "revised_message", "text": best_message}
                 ],
-                outcomes
+                outcomes,
+                **({"model_id": model_id} if model_id else {})
             )
 
             output = {

@@ -221,6 +221,7 @@ async def compare(data: CompareInput, user: User = Depends(get_user_from_api_key
 class ReviseInput(BaseModel):
     content: Content = Field(..., description="A piece of content to revised")
     outcome: Outcome = Field(..., description="The target outcome")
+    model_id: str = Field(..., description="The model to use for prediction")
 
 @app.post("/revise", response_model=OutputItem, tags=["revise"])
 async def revise(data: ReviseInput, user: User = Depends(get_user_from_api_key)):
@@ -236,7 +237,7 @@ async def revise(data: ReviseInput, user: User = Depends(get_user_from_api_key))
 @app.post("/job", tags=["job"])
 def job(job_id: str):
     job = Job.get(id=job_id)
-    if job.output is None:
+    if job.progress != 100:
         return {
             "job_id": job.id,
             "input": job.input,

@@ -256,8 +256,8 @@
                     <!-- <label for="question">the attitude or belief that the content aims to change</label> -->
                     
                     <textarea id="question" name="question" rows="4">How much do you agree/disagree with the following: ...</textarea><br/>
-                    <div style="margin-top:0.5em;">
-                        <input type="text" id="lower" name="lower" value="Strongly disagree" style="width:150px !important"> to <input type="text" id="upper" name="upper" value="Strongly agree" style="width:150px !important">
+                    <div style="margin-top:0.5em; text-align:center;">
+                        <input type="text" id="lower" name="lower" value="Strongly disagree" style="width:150px !important; background: rgb(256 0 0 / 15%);"> to <input type="text" id="upper" name="upper" value="Strongly agree" style="width:150px !important; background: rgb(0 256 0 / 15%);">
                     </div>
 
                     <!-- <textarea id="question" name="question" rows="4"></textarea><br/>
@@ -366,6 +366,7 @@
         // formData.append('upper', document.getElementById('upper').value);
         // formData.append('audience', document.getElementById('audience').value);
         const formData = {
+            model_id: "accounts/fireworks/models/llama-v3p1-405b-instruct",
             content: {
                 name: "original_message",
                 text: message
@@ -400,7 +401,7 @@
                 document.getElementById('progress').innerText = 'An error occurred: ' + JSON.stringify(data);
             } else {
                 const job_id = data.job_id;
-                document.getElementById('progress').innerHTML = 'Improving message...<br/><div class="progress-bar" id="myProgressBar" style="width: 0%;"></div>';
+                document.getElementById('progress').innerHTML = '<span id="current_output">Running...</span><br/><div class="progress-bar" id="myProgressBar" style="width: 0%;"></div>';
                 // Animate ellipsis
                 // setInterval(() => {
                 //     const progress = document.getElementById('progress').innerText;
@@ -434,6 +435,10 @@
         .then(data => {
             if(data.status == "running") {
                 document.getElementById('myProgressBar').style.width = data.progress + '%';
+                // if data has output
+                if(data.output) {
+                    document.getElementById('current_output').innerHTML = data.output;
+                }
             }
             if (data.status === 'completed') {
                 document.getElementById('myProgressBar').style.width = data.progress + '%';

@@ -53,13 +53,12 @@ for profile in profiles:
     profile["intro"] = random.choice(intros)
 
 class PredictiveModel:
-    def __init__(self, model_name: str, model_id: str):
-        self.model_name = model_name
+    def __init__(self, model_id: str):
         self.model_id = model_id
 
     @backoff.on_exception(backoff.expo, requests.exceptions.RequestException, max_tries=8)
     def run(self, system_prompt:str, user_prompt:str):
-        if model_id.startswith("accounts/fireworks/models/"):
+        if self.model_id.startswith("accounts/fireworks/models/"):
             url = "https://api.fireworks.ai/inference/v1/completions"
             headers = {
                 "Accept": "application/json",
@@ -67,7 +66,7 @@ class PredictiveModel:
                 "Authorization": f"Bearer {FIREWORKS_API_KEY}"
             }
             data = {
-                "model": model_id,
+                "model": self.model_id,
                 "max_tokens": 1,
                 "prompt": f"{system_prompt}\n-----\n{user_prompt}\n-----ANSWER: ",
                 "logprobs": 5
@@ -79,16 +78,16 @@ class PredictiveModel:
                         if k in valid_tokens}
             # print(logprobs)
         else:
-            if model_id.startswith("gpt"):
+            if self.model_id.startswith("gpt"):
                 url = "https://api.openai.com/v1/chat/completions"
                 headers = {"Content-Type": "application/json", "Authorization": f"Bearer {OPENAI_API_KEY}"}
-                if model_id.startswith("gpt-4o"):
+                if self.model_id.startswith("gpt-4o"):
                     logit_bias = {openai_tokens_o200k_base[str(k)]:100 for k in ["1", "2", "3", "4", "5"]}
                 else:
                     logit_bias = {openai_tokens_cl100k_base[str(k)]:100 for k in ["1", "2", "3", "4", "5"]}
                 valid_tokens = ["1", "2", "3", "4", "5"]
             else:
-                url = f"https://model-{model_id}.api.baseten.co/production/predict"
+                url = f"https://model-{self.model_id}.api.baseten.co/production/predict"
                 headers={"Authorization": f"Api-Key {BASETEN_API_KEY}"}
                 logit_bias = {"16":100, "17":100, "18":100, "19":100, "20":100} # These are llama tokens 1,2,3,4,5
                 valid_tokens = ["1", "2", "3", "4", "5"]
@@ -104,8 +103,8 @@ class PredictiveModel:
                 "top_logprobs":5,
                 "logit_bias":logit_bias
             }
-            if model_id.startswith("gpt"):
-                data["model"] = model_id
+            if self.model_id.startswith("gpt"):
+                data["model"] = self.model_id
 
             resp = requests.post(url, headers=headers, json=data)
             logprobs = {int(x['token']):x['logprob']
@@ -162,8 +161,8 @@ Please answer with your own opinion, on a scale from 1 ({min_label_}) to 5 ({max
 
 # model_name = "Llama 3 8B Instruct vllm"
 # model_id = "nwxly8yw"
-model_name = "gpt-4o-mini"
-model_id = "gpt-4o-mini"
+# model_name = "gpt-4o-mini"
+# model_id = "gpt-4o-mini"
 # model_name = "Llama 3.1 70B Instruct"
 # model_id = "8w6xen0w"
 # model_name = "Llama 3.1 405B Instruct"
@@ -173,8 +172,8 @@ model_id = "gpt-4o-mini"
 
     
 
-def predict(message: str, target_attitude: str, min_label:str, max_label:str):
-    predictive_model = PredictiveModel(model_name=model_name, model_id=model_id)
+def predict(message: str, target_attitude: str, min_label:str, max_label:str, model_id="gpt-4o-mini"):
+    predictive_model = PredictiveModel(model_id=model_id)
     result = predictive_model.predict(message, target_attitude, min_label, max_label)
     # return (result["prediction"]-1)/4
     return result["prediction"]
