@@ -222,7 +222,7 @@
                 <!-- <div class="form-group" style="min-width:550px;">
                     Use the API to predict the persuasiveness of a message.
                 </div>  -->
-                <input type="hidden" id="predict" name="endpoint" value="edit" />
+                <!-- <input type="hidden" id="predict" name="endpoint" value="edit" /> -->
 
                 <!-- <div class="form-group">
                     <label for="model">Scoring model</label>
@@ -232,23 +232,6 @@
                     </select>   
                 </div> -->
             </div>
-        </div>
-
-        <div class="collapsable" id="contentFormGroup">
-            <hr/>
-            <h2>Message</h2>
-            <div style="display: flex; gap:30px">
-                <div class="form-group" style="width:100%"><!--</div>style="min-width:550px; width:550px;">-->
-                    <!-- <label for="message">Write a message you want to improve</label> -->
-                    <textarea id="message" name="message" rows="4"></textarea>
-                </div>
-        
-                <!-- <div class="form-group">
-                    <label for="file">...or upload a video</label>
-                    <input type="file" id="file" name="file">
-                </div> -->
-            </div>
-
         </div>
 
         <div class="collapsable" id="targetFormGroup">
@@ -271,12 +254,30 @@
                     </select>   
                 </div> -->
             </div>
+            
+        </div>
 
+        <div class="collapsable" id="contentFormGroup">
+            <hr/>
+            <h2>Message</h2>
+            <div style="display: flex; gap:30px">
+                <div class="form-group" style="width:100%"><!--</div>style="min-width:550px; width:550px;">-->
+                    <!-- <label for="message">Write a message you want to improve</label> -->
+                    <textarea id="message" name="message" rows="23"></textarea>
+                </div>
+        
+                <!-- <div class="form-group">
+                    <label for="file">...or upload a video</label>
+                    <input type="file" id="file" name="file">
+                </div> -->
+            </div>
 
             <div class="collapsable" id="submitBtn" style="width:100%; text-align:center;">
                 <button type="submit">Submit</button>
             </div>
         </div>
+
+       
 
         
         <div id="progress" style="display:none"></div>
@@ -289,7 +290,8 @@
     document.addEventListener('DOMContentLoaded', function() {
         requestAnimationFrame(function() {
             document.getElementById('apiFormGroup').classList.add('expand');
-            document.getElementById('contentFormGroup').classList.add('expand');
+            // document.getElementById('contentFormGroup').classList.add('expand');
+            document.getElementById('targetFormGroup').classList.add('expand');
         })
     });
 
@@ -300,17 +302,19 @@
     //     document.getElementById('targetFormGroup').classList.add('expand');
     // });
 
-    document.getElementById('message').addEventListener('input', function() {
-        document.getElementById('targetFormGroup').classList.add('expand');
-        // document.getElementById('submitBtn').classList.add('expand');
-    });
+
     // document.getElementById('file').addEventListener('change', function() {
     //     document.getElementById('targetFormGroup').classList.add('expand');
     //     // document.getElementById('submitBtn').classList.add('expand');
     // });
 
     document.getElementById('question').addEventListener('input', function() {
-        // document.getElementById('contentFormGroup').classList.add('expand');
+        document.getElementById('contentFormGroup').classList.add('expand');
+        // document.getElementById('submitBtn').classList.add('expand');
+    });
+
+    document.getElementById('message').addEventListener('input', function() {
+        // document.getElementById('targetFormGroup').classList.add('expand');
         document.getElementById('submitBtn').classList.add('expand');
     });
 
@@ -324,38 +328,59 @@
         document.getElementById('submitBtn').classList.remove('expand');
 
         const message = document.getElementById('message').value;
-        if(document.getElementById('predict').checked) {
-            apiEndpoint = 'https://api.rhetorical.org/predict';
-        } else {
-            apiEndpoint = 'https://api.rhetorical.org/generate';
-        }
+        // if(document.getElementById('predict').checked) {
+        //     apiEndpoint = 'https://api.rhetorical.org/predict';
+        // } else {
+        //     apiEndpoint = 'https://api.rhetorical.org/generate';
+        // }
+        apiEndpoint = 'https://api.rhetorical.org/revise';
 
-        const formData = new FormData();
+        // const formData = new FormData();
         // const fileInput = document.querySelector('input[type="file"]');
         // const file = fileInput.files[0];
         // if(file) {formData.append('file', file)}
-        if(message) {formData.append('message', message)}
+        // if(message) {formData.append('message', message)}
         
         // formData.append('model', document.getElementById('model').value);
-        formData.append('question', document.getElementById('question').value);
-        formData.append('lower', document.getElementById('lower').value);
-        formData.append('upper', document.getElementById('upper').value);
+        // formData.append('question', document.getElementById('question').value);
+        // formData.append('lower', document.getElementById('lower').value);
+        // formData.append('upper', document.getElementById('upper').value);
         // formData.append('audience', document.getElementById('audience').value);
-        
+        const formData = {
+            content: {
+                name: "original_message",
+                text: message
+            },
+            outcome: {
+                question: document.getElementById('question').value,
+                label_good: document.getElementById('upper').value,
+                label_bad: document.getElementById('lower').value
+            }
+        }
+        console.log(formData)
 
         document.getElementById('progress').style.display = 'block';
         document.getElementById('progress').innerText = 'Sending request to API';
 
+        // Header: api key
+
+
         fetch(apiEndpoint, {
             method: 'POST',
-            body: formData
+            // body: formData,
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-API-Key': 'pilot',
+            }
         })
         .then(response => response.json())
         .then(data => {
-            if (!data.task_id) {
+            if (!data.job_id) {
                 document.getElementById('progress').innerText = 'An error occurred: ' + JSON.stringify(data);
             } else {
-                const taskId = data.task_id;
+                const job_id = data.job_id;
                 document.getElementById('progress').innerHTML = 'Thinking...<br/><div class="progress-bar" id="myProgressBar" style="width: 0%;"></div>';
                 // Animate ellipsis
                 // setInterval(() => {
@@ -368,7 +393,7 @@
                 // }, 500)
 
 
-                checkStatus(taskId);
+                checkStatus(job_id);
             }
         })
         .catch(error => {
@@ -377,14 +402,14 @@
         });
     });
 
-    function checkStatus(taskId) {
-        const statusEndpoint = 'https://api.rhetorical.org/status';
+    function checkStatus(job_id) {
+        const statusEndpoint = 'https://api.rhetorical.org/job?job_id=' + job_id;
         fetch(statusEndpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ task_id: taskId })
+            body: JSON.stringify({ job_id: job_id })
         })
         .then(response => response.json())
         .then(data => {
@@ -398,67 +423,21 @@
                 document.getElementById('result').style.display = 'block';
                 document.getElementById('result').innerHTML = ""
                 
-
-                // if (data.output.prediction) {
-                //     document.getElementById('result').innerHTML += "<h1>Score</h1>"
-                //     document.getElementById('result').innerHTML += `<b>Prediction:</b> ${data.output.prediction}`
-                // }
-
-                // if(data.output.suggestions) {
-                //     // output is a list of suggestions, each with a score and a list of variants
-                //     data.output.suggestions.forEach(x => {
-                //         s = `<b>${x.strategy}</b><br><ul>`
-                //         x.suggestions.forEach(suggestion => {
-                //             s += `<li>"${suggestion.message}"</li> <i>(prediction: ${suggestion.prediction})</i>`
-                //         });
-                //         s += "</ul>"
-                        
-                //         const suggestionElement = document.createElement('div');
-                //         suggestionElement.innerHTML = s
-
-                        
-                //         document.getElementById('result').appendChild(suggestionElement);
-                //     });
-                // }
-
-                document.getElementById('result').innerHTML += "<h1>Input</h1>"
-                s = data.output.message
-                const variantElement = document.createElement('div');
-                        variantElement.classList.add('variant');
-                        variantElement.innerHTML = `${s} <br> <div style="
-    width: 100%;
-    text-align: right;
-    font-family:sans-serif
-    ">Score: ${Math.round(data.output.prediction*100)/100}</div>`
+                document.getElementById('result').innerHTML += "<h1>Original message</h1>"
+                s = document.getElementById('message').value
+                variantElement = document.createElement('div');
+                variantElement.classList.add('variant');
+                variantElement.innerHTML = `${s.replace(/\n/g, "<br>")}`
                 document.getElementById('result').appendChild(variantElement);
 
-                if(data.output.variants) {
-                    document.getElementById('result').innerHTML += "<h1>Top suggestions</h1>"
-                    
-
-                    data.output.variants.forEach((x, index) => {
-                        original_section = x.original_section
-                        highlight_start = x.highlight_start
-                        highlight_end = x.highlight_end
-                        
-                        document.getElementById('result').innerHTML += (index+1) + ". " + '<i>"' + original_section + '"</i> - ' + x.reason
-
-                        s = x.message.substring(0, highlight_start) +
-                                "<span class='highlight'>" +
-                                x.message.substring(highlight_start, highlight_end) + "</span>" + x.message.substring(highlight_end);
-                        
-                        
-                        const variantElement = document.createElement('div');
-                        variantElement.classList.add('variant');
-                        variantElement.innerHTML = `${s} <br> <div style="
-    width: 100%;
-    text-align: right;
-    font-family:sans-serif
-    ">Score: ${Math.round(x.prediction*100)/100}</div>`
-                        document.getElementById('result').appendChild(variantElement);
-
-                    });
-                }
+                p_better = Math.round(data.output['prob'] * 100)
+                // Convert to a percentage integer
+                document.getElementById('result').innerHTML += "<h1>New message</h1>"    
+                document.getElementById('result').innerHTML += `<p>${p_better}% probability of improvement</p>`
+                variantElement = document.createElement('div');
+                variantElement.classList.add('variant');
+                variantElement.innerHTML = `${data.output['revised_message'].replace(/\n/g, "<br>")}`
+                document.getElementById('result').appendChild(variantElement);
 
                 // document.getElementById('progress').classList.remove('expand');
                 // document.getElementById('progress').style.display = 'none';
@@ -470,7 +449,7 @@
                 }, 1000);
                 
             } else {
-                setTimeout(() => checkStatus(taskId), 200);
+                setTimeout(() => checkStatus(job_id), 200);
             }
         })
         .catch(error => {

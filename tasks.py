@@ -54,10 +54,10 @@ def get_predictions(contents, outcomes, callback=lambda pct: None):
 
 @app.task
 def run_job(job_id:str):
-    print("Running job", job_id)
+    print(f"Running job {job_id}")
     job = Job.get(id=job_id)
-    print("Command:", job.command)
-    print("Input:", job.input)
+    print(f"Command: {job.command}")
+    print(f"Input: {job.input}")
 
     job.progress = 10; job.save()
 
@@ -81,7 +81,7 @@ def run_job(job_id:str):
             print("Generating alternatives")
             def callback(pct):
                 print("Progress:", pct, "%")
-                job.progress = 10 + int(40 * pct); job.save()
+                job.progress = 10 + int(60 * pct); job.save()
 
             content = job.input["content"]
             outcome = job.input["outcome"]
@@ -99,13 +99,26 @@ def run_job(job_id:str):
                 {"question": outcome["question"], "label_good": outcome["label_good"], "label_bad": outcome["label_bad"]}
             ]
             def callback(pct):
-                job.progress = 50 + int(40 * pct); job.save()
+                job.progress = 70 + int(20 * pct); job.save()
             predictions = get_predictions(contents, outcomes, callback)
 
             best = max(predictions, key=lambda x: x["prob"])
             best_message = [x['text'] for x in contents if x['name'] == best['name']][0]
 
-            job.output = best_message
+            p_better = get_predictions(
+                [
+                    {"name": "original_message", "text": content["text"]},
+                    {"name": "revised_message", "text": best_message}
+                ],
+                outcomes
+            )[1]["prob"]
+
+            output = {
+                "revised_message": best_message,
+                "prob": p_better
+            }
+            
+            job.output = output
             job.progress = 100
             job.save()
             return job.output
