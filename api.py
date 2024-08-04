@@ -32,6 +32,10 @@ def demo():
 def login():
     return render_template('login.html')
 
+@flask_app.route('/llamathon')
+def llamathon():
+    return render_template('llamathon.html')
+
 CLERK_API_KEY = os.getenv('CLERK_API_KEY')
 CLERK_BASE_URL = 'https://api.clerk.dev/v1'
 def get_user(token: str):
@@ -108,6 +112,8 @@ app.mount("/web", WSGIMiddleware(flask_app))
 
 api_key_header = APIKeyHeader(name="X-API-Key")
 def get_user_from_api_key(api_key_header: str = Security(api_key_header)):
+    if api_key_header == "pilot":
+        user = User.get_or_create(id="pilot")
     user = User.get_or_none(api_key=api_key_header)
     if user is None:
         raise HTTPException(
@@ -200,6 +206,21 @@ async def compare(data: CompareInput, user: User = Depends(get_user_from_api_key
             detail="Unauthorized"
         )
     job = Job.create(command="compare", input=data.model_dump())
+    run_job.delay(job.id)
+    return {"job_id": job.id}
+
+
+class ReviseInput(BaseModel):
+    content: Content = Field(..., description="A piece of content to revised")
+    outcome: Outcome = Field(..., description="The target outcome")
+@app.post("/revise", response_model=OutputItem, tags=["compare"])
+async def revise(data: ReviseInput, user: User = Depends(get_user_from_api_key)):
+    if user.credit == 0:
+        raise HTTPException(
+            status_code=fastapi.status.HTTP_403_FORBIDDEN,
+            detail="Unauthorized"
+        )
+    job = Job.create(command="revise", input=data.model_dump())
     run_job.delay(job.id)
     return {"job_id": job.id}
 

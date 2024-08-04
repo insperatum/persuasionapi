@@ -14,9 +14,50 @@ app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
 
 
+def get_predictions(contents, outcomes, callback=lambda pct: None):
+    from ai.scratch.model import predict
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {}
+        for i, content in enumerate(contents):
+            for j, outcome in enumerate(outcomes):
+                future = executor.submit(predict, content["text"], outcome["question"], outcome["label_bad"], outcome["label_good"])
+                futures[future] = (i, j)
+
+        df = pd.DataFrame()
+        for k, future in enumerate(concurrent.futures.as_completed(futures)):
+            i, j = futures[future]
+            df = pd.concat([df, pd.DataFrame([{"i": i, "j": j, "prediction": future.result()}])])
+            pct = k / len(futures)
+            callback(pct)
+        
+    predictions = []
+    for i, content in enumerate(contents):
+        predictions.append(df[df.i == i].prediction.mean())
+
+    import numpy as np
+    predictions = np.array(predictions)
+    predictions_demean = predictions - predictions.mean()
+    # We want softmax(predictions_demean * 1.914452)
+    probs = np.exp(predictions_demean * 1.914452) / np.exp(predictions_demean * 1.914452).sum()
+
+    # if predictions.std() == 0:
+    #     zs = (predictions - predictions.mean())
+    # else:
+    #     zs = (predictions - predictions.mean()) / predictions.std()
+
+    output = [
+        {"name": content["name"], "prob": prob}
+        for content, prob in zip(contents, probs)
+    ]
+    return output
+
 @app.task
 def run_job(job_id:str):
+    print("Running job", job_id)
     job = Job.get(id=job_id)
+    print("Command:", job.command)
+    print("Input:", job.input)
 
     job.progress = 10; job.save()
 
@@ -25,46 +66,54 @@ def run_job(job_id:str):
             contents = job.input['contents']
             outcomes = job.input['outcomes']
 
-            from ai.scratch.model import predict
-
-            with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-                futures = {}
-                for i, content in enumerate(contents):
-                    for j, outcome in enumerate(outcomes):
-                        future = executor.submit(predict, content["text"], outcome["question"], outcome["label_bad"], outcome["label_good"])
-                        futures[future] = (i, j)
-
-                df = pd.DataFrame()
-                for k, future in enumerate(concurrent.futures.as_completed(futures)):
-                    i, j = futures[future]
-                    df = pd.concat([df, pd.DataFrame([{"i": i, "j": j, "prediction": future.result()}])])
-                    job.progress = 10 + int(90 * k / len(futures)); job.save()
-                
-            predictions = []
-            for i, content in enumerate(contents):
-                predictions.append(df[df.i == i].prediction.mean())
-
-            import numpy as np
-            predictions = np.array(predictions)
-            predictions_demean = predictions - predictions.mean()
-            # We want softmax(predictions_demean * 1.914452)
-            probs = np.exp(predictions_demean * 1.914452) / np.exp(predictions_demean * 1.914452).sum()
-
-            # if predictions.std() == 0:
-            #     zs = (predictions - predictions.mean())
-            # else:
-            #     zs = (predictions - predictions.mean()) / predictions.std()
-
-            output = [
-                {"name": content["name"], "prob": prob}
-                for content, prob in zip(contents, probs)
-            ]
+            def callback(pct):
+                job.progress = 10 + int(90 * pct); job.save()
+            output = get_predictions(contents, outcomes, callback)
 
             job.output = output
             job.progress = 100
             job.save()
 
             return job.output
+        
+        elif job.command == "revise":
+            from ai.llamathon.model import generate_n_alternatives
+            print("Generating alternatives")
+            def callback(pct):
+                print("Progress:", pct, "%")
+                job.progress = 10 + int(40 * pct); job.save()
+
+            content = job.input["content"]
+            outcome = job.input["outcome"]
+            alternatives = generate_n_alternatives(
+                original_message = content["text"],
+                question = outcome["question"],
+                desired_answer = outcome["label_good"],
+                undesired_answer = outcome["label_bad"],
+                callback = callback
+            )
+            print("Finished generating alternatives")
+
+            contents = [{"name": f"message{i}", "text": alternative} for i, alternative in enumerate(alternatives)]
+            outcomes = [
+                {"question": outcome["question"], "label_good": outcome["label_good"], "label_bad": outcome["label_bad"]}
+            ]
+            def callback(pct):
+                job.progress = 50 + int(40 * pct); job.save()
+            predictions = get_predictions(contents, outcomes, callback)
+
+            best = max(predictions, key=lambda x: x["prob"])
+            best_message = [x['text'] for x in contents if x['name'] == best['name']][0]
+
+            job.output = best_message
+            job.progress = 100
+            job.save()
+            return job.output
+        
+        else:
+            raise ValueError(f"Invalid command: {job.command}")
+
+
     except Exception as e:
         job.output = {
             "job_id": job.id,

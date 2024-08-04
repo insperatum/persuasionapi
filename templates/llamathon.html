@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attitude API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <style>
+        .collapsable {
+            max-height: 0px; 
+            transition: max-height 0.4s ease-in;
+            overflow: hidden;
+        }
+
+        .expand {
+            max-height: 600px !important;
+        }
+
+        .expand-long {
+            max-height: 1500px !important;
+        }
+
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            /* font-weight:bold; */
+            font-weight:normal;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* background: linear-gradient(135deg, #38a1db, #003366); */
+            background: linear-gradient(135deg, #80278f, #003366);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            /* text-align: center; */
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 4em;
+            margin: 0;
+
+            background: linear-gradient(45deg, #ff4bfc, #ff8521);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+
+        #messageForm {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 1em;
+            border-radius: 10px;
+            color: white;
+
+            font-size: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+            background: rgba(255, 255, 255, 0.3);
+            height: auto;
+            overflow: hidden;
+            transition: height 5s ease-in-out;
+        }
+        .container {
+            width: 800px;
+            margin: auto;
+            padding: 10px;
+            /* border: 1px solid #ccc; */
+            
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], textarea, input[type="file"], select {
+            box-shadow: 4px 4px 4px rgb(0,0,0,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            background: rgb(0 0 0 / 15%);
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: 2px solid white;
+            border-radius: 30px;
+            background: none;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1em;
+            border-radius: 30px;
+        }
+        button:hover {
+            background-color: #f3698f;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        #result {
+            padding: 20px;
+            /* background-color: rgba(255,255,255,0.8); */
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+            /* font-family: monospace; */
+            font-size: 0.8em;
+            /* color: black; */
+        }
+
+
+        .radio-button {
+            display: none;
+        }
+        
+        .radio-label {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: 2px solid white;
+            border-radius: 30px;
+            background-color: none;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1em;
+        }
+        
+        .radio-button:checked + .radio-label {
+            background-color: #f3698f;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        hr {
+            border: none;
+        }
+
+        .variant {
+            border-radius: 10px;
+            margin-bottom: 0.5em;
+            margin-top: 0.5em;
+            padding: 0.5em;
+            background: rgba(255, 255, 255, 0.7);
+            color: black;
+        }
+
+        .highlight {
+            padding: 0 0.2em;
+            background: #fdff7b;
+        }
+
+        h1 {
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+
+
+
+
+
+    .progress-bar {
+        background: linear-gradient(45deg, #ff4bfc, #ff8521);
+        height: 5px;
+        border-radius: 5px;
+        transition: width 0.5s;
+        margin: 10px 0px;
+    }
+    </style>
+</head>
+<body>
+
+<!-- <div class="" style="
+    padding: 10px 15px;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+">
+    <a href="/" style="
+    font-weight: bold;
+    /* font-size: 1.1em; */
+    margin: 0;
+    background: linear-gradient(45deg, #ff4bfc, #ff8521);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    ">
+        Attitude API
+    </a>
+</div> -->
+
+<div class="container">
+    <!-- <div class="header">
+        <h1>Attitude API: Demo</h1>
+    </div> -->
+    <form id="messageForm">
+        <div class="collapsable" id="apiFormGroup">
+            <!-- <h2>API</h2> -->
+            <div style="display: flex; gap:30px">
+                <!-- <div class="form-group" style="min-width:550px;">
+                    Choose an API endpoint<br/>
+                    <input type="radio" id="predict" name="endpoint" value="predict" class="radio-button">
+                    <label for="predict" class="radio-label">Score</label>
+                    <input type="radio" id="edit" name="endpoint" value="edit" class="radio-button">
+                    <label for="edit" class="radio-label">Edit</label>
+                </div> -->
+                <!-- <div class="form-group" style="min-width:550px;">
+                    Use the API to predict the persuasiveness of a message.
+                </div>  -->
+                <input type="hidden" id="predict" name="endpoint" value="edit" />
+
+                <!-- <div class="form-group">
+                    <label for="model">Scoring model</label>
+                    <select id="model" name="model">
+                        <option value="basic">Basic</option>
+                        <option value="ashokkumar2024" selected>Ashokkumar et al. 2024</option>
+                    </select>   
+                </div> -->
+            </div>
+        </div>
+
+        <div class="collapsable" id="contentFormGroup">
+            <hr/>
+            <h2>Message</h2>
+            <div style="display: flex; gap:30px">
+                <div class="form-group" style="width:100%"><!--</div>style="min-width:550px; width:550px;">-->
+                    <!-- <label for="message">Write a message you want to improve</label> -->
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+        
+                <!-- <div class="form-group">
+                    <label for="file">...or upload a video</label>
+                    <input type="file" id="file" name="file">
+                </div> -->
+            </div>
+
+        </div>
+
+        <div class="collapsable" id="targetFormGroup">
+            <hr/>
+            <h2>Target attitude</h2>
+            <div style="display: flex; gap:30px">
+                <div class="form-group" style="width:100%"><!--</div>style="min-width:550px; width:550px;">-->
+                    <!-- <label for="question">Write an outcome question describing
+                        the attitude/belief which the content aims to change</label> -->
+                    <textarea id="question" name="question" rows="4">How much do you agree/disagree with the following statement: "..."</textarea><br/>
+                    <div style="margin-top:0.5em;">
+                        <input type="text" id="lower" name="lower" value="Strongly disagree" style="width:150px !important"> to <input type="text" id="upper" name="upper" value="Strongly agree" style="width:150px !important">
+                    </div>
+                </div>
+        
+                <!-- <div class="form-group">
+                    <label for="audience">Audience</label>
+                    <select id="audience" name="audience">
+                        <option value="us-adults" selected>U.S. Adults</option>
+                    </select>   
+                </div> -->
+            </div>
+
+
+            <div class="collapsable" id="submitBtn" style="width:100%; text-align:center;">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+
+        
+        <div id="progress" style="display:none"></div>
+        <div id="result" class="collapsable"></div>
+    </form>
+</div>
+
+<script>
+    // When page is rendered:
+    document.addEventListener('DOMContentLoaded', function() {
+        requestAnimationFrame(function() {
+            document.getElementById('apiFormGroup').classList.add('expand');
+            document.getElementById('contentFormGroup').classList.add('expand');
+        })
+    });
+
+    // document.getElementById('predict').addEventListener('change', function() {
+    //     document.getElementById('targetFormGroup').classList.add('expand');
+    // });
+    // document.getElementById('edit').addEventListener('change', function() {
+    //     document.getElementById('targetFormGroup').classList.add('expand');
+    // });
+
+    document.getElementById('message').addEventListener('input', function() {
+        document.getElementById('targetFormGroup').classList.add('expand');
+        // document.getElementById('submitBtn').classList.add('expand');
+    });
+    // document.getElementById('file').addEventListener('change', function() {
+    //     document.getElementById('targetFormGroup').classList.add('expand');
+    //     // document.getElementById('submitBtn').classList.add('expand');
+    // });
+
+    document.getElementById('question').addEventListener('input', function() {
+        // document.getElementById('contentFormGroup').classList.add('expand');
+        document.getElementById('submitBtn').classList.add('expand');
+    });
+
+
+    document.getElementById('messageForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        document.getElementById('apiFormGroup').classList.remove('expand');
+        document.getElementById('contentFormGroup').classList.remove('expand');
+        document.getElementById('targetFormGroup').classList.remove('expand');
+        document.getElementById('submitBtn').classList.remove('expand');
+
+        const message = document.getElementById('message').value;
+        if(document.getElementById('predict').checked) {
+            apiEndpoint = 'https://api.rhetorical.org/predict';
+        } else {
+            apiEndpoint = 'https://api.rhetorical.org/generate';
+        }
+
+        const formData = new FormData();
+        // const fileInput = document.querySelector('input[type="file"]');
+        // const file = fileInput.files[0];
+        // if(file) {formData.append('file', file)}
+        if(message) {formData.append('message', message)}
+        
+        // formData.append('model', document.getElementById('model').value);
+        formData.append('question', document.getElementById('question').value);
+        formData.append('lower', document.getElementById('lower').value);
+        formData.append('upper', document.getElementById('upper').value);
+        // formData.append('audience', document.getElementById('audience').value);
+        
+
+        document.getElementById('progress').style.display = 'block';
+        document.getElementById('progress').innerText = 'Sending request to API';
+
+        fetch(apiEndpoint, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.task_id) {
+                document.getElementById('progress').innerText = 'An error occurred: ' + JSON.stringify(data);
+            } else {
+                const taskId = data.task_id;
+                document.getElementById('progress').innerHTML = 'Thinking...<br/><div class="progress-bar" id="myProgressBar" style="width: 0%;"></div>';
+                // Animate ellipsis
+                // setInterval(() => {
+                //     const progress = document.getElementById('progress').innerText;
+                //     if (progress.length < 11) {
+                //         document.getElementById('progress').innerText += '.';
+                //     } else {
+                //         document.getElementById('progress').innerText = 'Thinking';
+                //     }
+                // }, 500)
+
+
+                checkStatus(taskId);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('progress').innerText = 'An error occurred';
+        });
+    });
+
+    function checkStatus(taskId) {
+        const statusEndpoint = 'https://api.rhetorical.org/status';
+        fetch(statusEndpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ task_id: taskId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status == "running") {
+                document.getElementById('myProgressBar').style.width = data.progress + '%';
+            }
+            if (data.status === 'completed') {
+                document.getElementById('myProgressBar').style.width = data.progress + '%';
+                
+                console.log(data.output)
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').innerHTML = ""
+                
+
+                // if (data.output.prediction) {
+                //     document.getElementById('result').innerHTML += "<h1>Score</h1>"
+                //     document.getElementById('result').innerHTML += `<b>Prediction:</b> ${data.output.prediction}`
+                // }
+
+                // if(data.output.suggestions) {
+                //     // output is a list of suggestions, each with a score and a list of variants
+                //     data.output.suggestions.forEach(x => {
+                //         s = `<b>${x.strategy}</b><br><ul>`
+                //         x.suggestions.forEach(suggestion => {
+                //             s += `<li>"${suggestion.message}"</li> <i>(prediction: ${suggestion.prediction})</i>`
+                //         });
+                //         s += "</ul>"
+                        
+                //         const suggestionElement = document.createElement('div');
+                //         suggestionElement.innerHTML = s
+
+                        
+                //         document.getElementById('result').appendChild(suggestionElement);
+                //     });
+                // }
+
+                document.getElementById('result').innerHTML += "<h1>Input</h1>"
+                s = data.output.message
+                const variantElement = document.createElement('div');
+                        variantElement.classList.add('variant');
+                        variantElement.innerHTML = `${s} <br> <div style="
+    width: 100%;
+    text-align: right;
+    font-family:sans-serif
+    ">Score: ${Math.round(data.output.prediction*100)/100}</div>`
+                document.getElementById('result').appendChild(variantElement);
+
+                if(data.output.variants) {
+                    document.getElementById('result').innerHTML += "<h1>Top suggestions</h1>"
+                    
+
+                    data.output.variants.forEach((x, index) => {
+                        original_section = x.original_section
+                        highlight_start = x.highlight_start
+                        highlight_end = x.highlight_end
+                        
+                        document.getElementById('result').innerHTML += (index+1) + ". " + '<i>"' + original_section + '"</i> - ' + x.reason
+
+                        s = x.message.substring(0, highlight_start) +
+                                "<span class='highlight'>" +
+                                x.message.substring(highlight_start, highlight_end) + "</span>" + x.message.substring(highlight_end);
+                        
+                        
+                        const variantElement = document.createElement('div');
+                        variantElement.classList.add('variant');
+                        variantElement.innerHTML = `${s} <br> <div style="
+    width: 100%;
+    text-align: right;
+    font-family:sans-serif
+    ">Score: ${Math.round(x.prediction*100)/100}</div>`
+                        document.getElementById('result').appendChild(variantElement);
+
+                    });
+                }
+
+                // document.getElementById('progress').classList.remove('expand');
+                // document.getElementById('progress').style.display = 'none';
+                document.getElementById('myProgressBar').style.width = '100%';
+                //When it's complete, make it hidden
+                setTimeout(function() {
+                    document.getElementById('progress').style.display = 'none'
+                    document.getElementById('result').classList.add('expand-long');
+                }, 1000);
+                
+            } else {
+                setTimeout(() => checkStatus(taskId), 200);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('progress').innerText = 'An error occurred';
+        });
+    }
+</script>
