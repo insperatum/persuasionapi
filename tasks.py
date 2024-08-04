@@ -47,8 +47,8 @@ def get_predictions(contents, outcomes, callback=lambda pct: None):
     #     zs = (predictions - predictions.mean()) / predictions.std()
 
     output = [
-        {"name": content["name"], "prob": prob}
-        for content, prob in zip(contents, probs)
+        {"name": content["name"], "prob": prob, "mean": mean}
+        for content, prob, mean in zip(contents, probs, (predictions-1)/4*100)
     ]
     return output
 
@@ -105,17 +105,19 @@ def run_job(job_id:str):
             best = max(predictions, key=lambda x: x["prob"])
             best_message = [x['text'] for x in contents if x['name'] == best['name']][0]
 
-            p_better = get_predictions(
+            preds = get_predictions(
                 [
                     {"name": "original_message", "text": content["text"]},
                     {"name": "revised_message", "text": best_message}
                 ],
                 outcomes
-            )[1]["prob"]
+            )
 
             output = {
                 "revised_message": best_message,
-                "prob": p_better
+                "prob": preds[1]["prob"],
+                "original_mean": preds[0]["mean"],
+                "mean": preds[1]["mean"]
             }
             
             job.output = output

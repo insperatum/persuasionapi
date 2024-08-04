@@ -88,6 +88,10 @@ tags_metadata = [
         "description": "Run an RCT simulation",
     },
     {
+        "name": "revise",
+        "description": "Revise a message",
+    },
+    {
         "name": "job",
         "description": "Get the result of a job",
     },
@@ -133,6 +137,10 @@ async def redirect_example():
 @app.get("/login", include_in_schema=False)
 async def redirect_example():
     return RedirectResponse(url="/web/login")
+
+@app.get("/llamathon", include_in_schema=False)
+async def redirect_example():
+    return RedirectResponse(url="/web/llamathon")
 
 @app.post("/predict", include_in_schema=False)
 async def predict(message:str = Form(""), file: Union[UploadFile, None] = None, model:str = Form(""), question:str = Form(""), lower:str = Form(""), upper:str = Form(""), audience:str = Form("us-adults")):
@@ -213,7 +221,8 @@ async def compare(data: CompareInput, user: User = Depends(get_user_from_api_key
 class ReviseInput(BaseModel):
     content: Content = Field(..., description="A piece of content to revised")
     outcome: Outcome = Field(..., description="The target outcome")
-@app.post("/revise", response_model=OutputItem, tags=["compare"])
+
+@app.post("/revise", response_model=OutputItem, tags=["revise"])
 async def revise(data: ReviseInput, user: User = Depends(get_user_from_api_key)):
     if user.credit == 0:
         raise HTTPException(

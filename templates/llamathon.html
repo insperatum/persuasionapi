@@ -71,7 +71,7 @@
             transition: height 5s ease-in-out;
         }
         .container {
-            width: 800px;
+            width: 900px;
             margin: auto;
             padding: 10px;
             /* border: 1px solid #ccc; */
@@ -114,7 +114,7 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
         #result {
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             /* background-color: rgba(255,255,255,0.8); */
             border-radius: 10px;
             font-family: 'Roboto', sans-serif;
@@ -153,13 +153,26 @@
         }
 
         .variant {
+            font-style: italic;
+            border-left: 2px solid white;
+            /* border: 1px solid black; */
+            /* border-radius: 10px; */
+            /* margin-bottom: 0.5em; */
+            /* margin-top: 0.5em; */
+            padding-left: 0.5em;
+            /* background: rgba(255, 255, 255, 0.7); */
+            /* color: black; */
+        }
+
+
+        /* .variant {
             border-radius: 10px;
             margin-bottom: 0.5em;
             margin-top: 0.5em;
             padding: 0.5em;
             background: rgba(255, 255, 255, 0.7);
             color: black;
-        }
+        } */
 
         .highlight {
             padding: 0 0.2em;
@@ -168,6 +181,7 @@
 
         h1 {
             text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+
         }
 
 
@@ -236,15 +250,20 @@
 
         <div class="collapsable" id="targetFormGroup">
             <hr/>
-            <h2>Target attitude</h2>
+            <h2>Target question</h2>
             <div style="display: flex; gap:30px">
                 <div class="form-group" style="width:100%"><!--</div>style="min-width:550px; width:550px;">-->
-                    <!-- <label for="question">Write an outcome question describing
-                        the attitude/belief which the content aims to change</label> -->
-                    <textarea id="question" name="question" rows="4">How much do you agree/disagree with the following statement: "..."</textarea><br/>
+                    <!-- <label for="question">the attitude or belief that the content aims to change</label> -->
+                    
+                    <textarea id="question" name="question" rows="4">How much do you agree/disagree with the following: ...</textarea><br/>
                     <div style="margin-top:0.5em;">
                         <input type="text" id="lower" name="lower" value="Strongly disagree" style="width:150px !important"> to <input type="text" id="upper" name="upper" value="Strongly agree" style="width:150px !important">
                     </div>
+
+                    <!-- <textarea id="question" name="question" rows="4"></textarea><br/>
+                    <div style="margin-top:0.5em;">
+                        <input type="text" id="lower" name="lower" value="" style="width:150px !important"> to <input type="text" id="upper" name="upper" value="" style="width:150px !important">
+                    </div> -->
                 </div>
         
                 <!-- <div class="form-group">
@@ -381,7 +400,7 @@
                 document.getElementById('progress').innerText = 'An error occurred: ' + JSON.stringify(data);
             } else {
                 const job_id = data.job_id;
-                document.getElementById('progress').innerHTML = 'Thinking...<br/><div class="progress-bar" id="myProgressBar" style="width: 0%;"></div>';
+                document.getElementById('progress').innerHTML = 'Improving message...<br/><div class="progress-bar" id="myProgressBar" style="width: 0%;"></div>';
                 // Animate ellipsis
                 // setInterval(() => {
                 //     const progress = document.getElementById('progress').innerText;
@@ -423,17 +442,18 @@
                 document.getElementById('result').style.display = 'block';
                 document.getElementById('result').innerHTML = ""
                 
-                document.getElementById('result').innerHTML += "<h1>Original message</h1>"
+                original_mean = Math.round(data.output['original_mean']*10)/10
+                document.getElementById('result').innerHTML += `<h1>Original message (score ${original_mean}%)</h1>`
                 s = document.getElementById('message').value
                 variantElement = document.createElement('div');
                 variantElement.classList.add('variant');
                 variantElement.innerHTML = `${s.replace(/\n/g, "<br>")}`
                 document.getElementById('result').appendChild(variantElement);
 
-                p_better = Math.round(data.output['prob'] * 100)
+                // p_better = Math.round(data.output['prob'] * 100)
+                mean = Math.round(data.output['mean']*10)/10
                 // Convert to a percentage integer
-                document.getElementById('result').innerHTML += "<h1>New message</h1>"    
-                document.getElementById('result').innerHTML += `<p>${p_better}% probability of improvement</p>`
+                document.getElementById('result').innerHTML += `<h1>New message (score ${mean}%)</h1>`    
                 variantElement = document.createElement('div');
                 variantElement.classList.add('variant');
                 variantElement.innerHTML = `${data.output['revised_message'].replace(/\n/g, "<br>")}`
