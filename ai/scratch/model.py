@@ -107,9 +107,14 @@ class PredictiveModel:
                 data["model"] = self.model_id
 
             resp = requests.post(url, headers=headers, json=data)
-            logprobs = {int(x['token']):x['logprob']
-                        for x in resp.json()['choices'][0]['logprobs']['content'][0]['top_logprobs']
-                        if x['token'] in valid_tokens}
+            try:
+                logprobs = {int(x['token']):x['logprob']
+                            for x in resp.json()['choices'][0]['logprobs']['content'][0]['top_logprobs']
+                            if x['token'] in valid_tokens}
+            except Exception as e:
+                print("Error")
+                print(resp.json())
+                raise e
         z = logsumexp(list(logprobs.values()))
         probs = {k:np.exp(v-z) for k,v in logprobs.items()}
         expectation = sum(k*v for k,v in probs.items())
