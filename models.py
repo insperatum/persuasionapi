@@ -71,6 +71,6 @@ class Task(BaseModel):
 #     value = FloatField
 
 # Create the tables
-db.connect()
+# db.connect()
 # db.drop_tables([Task])#, Message, Prediction]) # TODO: peewee-db-evolve
-db.create_tables([Task, Job, User])#, Message, Prediction])
+# db.create_tables([Task, Job, User])#, Message, Prediction])

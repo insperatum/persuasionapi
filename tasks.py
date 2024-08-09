@@ -1,9 +1,10 @@
 import os
 from celery import Celery
 from celery.utils.log import get_task_logger
-
+from database import with_database
 import ai
-from models import Task, Job
+from models import Task, Job, User
+from functools import wraps
 # from multiprocessing.pool import ThreadPool
 import threading
 import concurrent.futures
@@ -13,6 +14,9 @@ import pandas as pd
 app = Celery('tasks', broker=os.getenv("CELERY_BROKER_URL"))
 logger = get_task_logger(__name__)
 
+# @app.on_after_configure.connect
+# def setup_database(sender, **kwargs):
+#     initialize_db()
 
 def get_predictions(contents, outcomes, callback=lambda pct: None, model_id=None):
     from ai.scratch.model import predict
@@ -53,6 +57,7 @@ def get_predictions(contents, outcomes, callback=lambda pct: None, model_id=None
     return output
 
 @app.task
+@with_database
 def run_job(job_id:str):
     print(f"Running job {job_id}")
     job = Job.get(id=job_id)
@@ -146,6 +151,7 @@ def run_job(job_id:str):
         raise e
 
 @app.task
+@with_database
 def analyze(task_id:str):
     task = Task.get(id=task_id)
 

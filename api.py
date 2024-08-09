@@ -17,6 +17,8 @@ from tasks import analyze, run_job
 import json
 import secrets
 
+from database import with_async_database, with_database
+
 flask_app = Flask(__name__)
 flask_app.secret_key = os.getenv('FLASK_SECRET_KEY', "super-secret")
 
@@ -114,6 +116,11 @@ app.add_middleware(
 
 app.mount("/web", WSGIMiddleware(flask_app))
 
+# @app.on_event("startup")
+# def on_startup():
+#     # Initialize the database when the application starts
+#     initialize_db()
+
 api_key_header = APIKeyHeader(name="X-API-Key")
 def get_user_from_api_key(api_key_header: str = Security(api_key_header)):
     if api_key_header == "pilot":
@@ -207,7 +214,8 @@ class OutputItem(BaseModel):
 
 
 @app.post("/compare", response_model=OutputItem, tags=["compare"])
-async def compare(data: CompareInput, user: User = Depends(get_user_from_api_key)):
+@with_database
+def compare(data: CompareInput, user: User = Depends(get_user_from_api_key)):
     if user.credit == 0:
         raise HTTPException(
             status_code=fastapi.status.HTTP_403_FORBIDDEN,
@@ -224,7 +232,8 @@ class ReviseInput(BaseModel):
     model_id: str = Field(..., description="The model to use for prediction")
 
 @app.post("/revise", response_model=OutputItem, tags=["revise"])
-async def revise(data: ReviseInput, user: User = Depends(get_user_from_api_key)):
+@with_database
+def revise(data: ReviseInput, user: User = Depends(get_user_from_api_key)):
     if user.credit == 0:
         raise HTTPException(
             status_code=fastapi.status.HTTP_403_FORBIDDEN,
@@ -235,6 +244,7 @@ async def revise(data: ReviseInput, user: User = Depends(get_user_from_api_key))
     return {"job_id": job.id}
 
 @app.post("/job", tags=["job"])
+@with_database
 def job(job_id: str):
     job = Job.get(id=job_id)
     if job.progress != 100:
